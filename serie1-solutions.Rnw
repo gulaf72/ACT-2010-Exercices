@@ -22,8 +22,9 @@
 
 <<>>= 
 library(xtable) 
+library(TTR)
 Yt <- read.csv("inflation.csv",header=TRUE,sep="\t")[,2] 
-Yt.ts <-ts(Yt/100,start=c(2008,7),deltat=1/12) 
+Yt.ts <-ts(Yt,start=c(2008,7),deltat=1/12) 
 @
 
 \textbf{Tableau des données} 
@@ -133,7 +134,7 @@ Le taux d'inflation prejeté en décembre 2013 est \Sexpr{round(taux.inf.dec.201
 \textbf{Solution du problème}
 <<>>=
 depense.dec.2008 <- 674
-depense.dec.2013 <- 674*(1+taux.inf.dec.2013)
+depense.dec.2013 <- 674*(1+taux.inf.dec.2013/100)
 @ 
 Le montant projeté des achats de cadeaux en décembre 2013 est \Sexpr{round(depense.dec.2013,2)} \$
 
