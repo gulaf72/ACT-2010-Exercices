@@ -1,3 +1,16 @@
+\documentclass{report} 
+\usepackage{graphicx}
+\usepackage[francais]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{verbatim} 
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{scrtime}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \section{Méthodes de lissage et saisonnalité}
 \label{sec:serie-dexercices-1}
@@ -40,7 +53,6 @@ décembre 2013.
   prédire le montant dépensé pour l'achat de cadeaux en décembre 2013.
 \end{enumerate}
 
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "exercices"
-%%% End: 
+Document généré le  \today  \ à \ \thistime
+
+\end{document}

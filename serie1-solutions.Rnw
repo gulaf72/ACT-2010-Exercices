@@ -1,0 +1,48 @@
+\documentclass{article} 
+\usepackage{graphicx}
+\usepackage[francais]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{verbatim} 
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{scrtime}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\section{Méthodes de lissage et saisonnalité}
+\label{sec:serie-dexercices-1}
+
+\subsection{Noël s'en vient !}
+\label{sec:exercice-1-1}
+
+<<echo=FALSE>>=
+library(xtable)
+Yt <- read.csv("cg130823a001-fra.csv",header=TRUE,sep="\t")[,2]
+Yt.ts <- ts(Yt,start=c(2008,7),deltat=1/12)
+@
+
+\textbf{Tableau des données}
+<<results=tex>>=
+xtable(Yt.ts,digits=1)
+@
+<<echo=FALSE>>=
+pdf("exercice1-graph1.pdf",paper="special", width=6, height=6)
+plot(Yt.ts)
+dummy <- dev.off()
+@ 
+\textbf{Graphique des données}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[height=4in, width=4in]{exercice1-graph1.pdf}
+  \caption{Graphique de la série $Y_t$}
+  \label{fig:exercice1-graph1}
+\end{figure}
+
+
+\clearpage
+Document généré le  \today  \ à \ \thistime
+
+\end{document}
