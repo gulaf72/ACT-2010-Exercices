@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  14 SEP 2013 22:33
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  15 SEP 2013 12:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,8 +770,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip51
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 11.
-
 (/usr/share/texlive/texmf-dist/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2012/03/07{} v0.18.5{} Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2166.
@@ -920,52 +918,73 @@ File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2008/06/18 v0.2 A new way to define environments
 )))
-(./exercices.aux (./serie1-exercices.aux) (./serie1-solutions.aux))
+(/usr/share/texlive/texmf-dist/tex/latex/ccicons/ccicons.sty
+Package: ccicons 2012/05/22 v1.4 LaTeX support for Creative Commons icons
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen190
+\extrarowheight=\dimen191
+\NC@list=\toks47
+\extratabsurround=\skip52
+\backup@length=\skip53
+)
+\TX@col@width=\dimen192
+\TX@old@table=\dimen193
+\TX@old@col=\dimen194
+\TX@target=\dimen195
+\TX@delta=\dimen196
+\TX@cols=\count158
+\TX@ftn=\toks48
+) (./exercices.aux
+(./serie1-exercices.aux))
 \openout1 = `exercices.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-
-ABD: EveryShipout initializing macros
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count158
-\scratchdimen=\dimen190
+\scratchcounter=\count159
+\scratchdimen=\dimen197
 \scratchbox=\box42
-\nofMPsegments=\count159
-\nofMParguments=\count160
-\everyMPshowfont=\toks47
-\MPscratchCnt=\count161
-\MPscratchDim=\dimen191
-\MPnumerator=\count162
-\makeMPintoPDFobject=\count163
-\everyMPtoPDFconversion=\toks48
+\nofMPsegments=\count160
+\nofMParguments=\count161
+\everyMPshowfont=\toks49
+\MPscratchCnt=\count162
+\MPscratchDim=\dimen198
+\MPnumerator=\count163
+\makeMPintoPDFobject=\count164
+\everyMPtoPDFconversion=\toks50
 )
 \AtBeginShipoutBox=\box43
-Package hyperref Info: Link coloring ON on input line 17.
+Package hyperref Info: Link coloring OFF on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count164
+\c@section@level=\count165
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./exercices.out) (./exercices.out)
 \@outlinefile=\write4
@@ -995,34 +1014,68 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 21.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 21.
+<by-sa.pdf, id=31, 121.45375pt x 43.16125pt>
+File: by-sa.pdf Graphic file (type pdf)
+ <use by-sa.pdf>
+Package pdftex.def Info: by-sa.pdf used on input line 25.
+(pdftex.def)             Requested size: 56.04544pt x 19.91692pt.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 34.
 
-(./exercices.aux (./serie1-exercices.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 21.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 21.
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
+
+<by.pdf, id=33, 56.21pt x 56.21pt> <use by.pdf>
+<sa.pdf, id=34, 56.21pt x 56.21pt> <use sa.pdf> <use by.pdf> <use sa.pdf>
+File: by.pdf Graphic file (type pdf)
+
+<use by.pdf>
+Package pdftex.def Info: by.pdf used on input line 54.
+(pdftex.def)             Requested size: 31.29811pt x 31.29802pt.
+File: sa.pdf Graphic file (type pdf)
+ <use sa.pdf>
+Package pdftex.def Info: sa.pdf used on input line 54.
+(pdftex.def)             Requested size: 31.29811pt x 31.29802pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 54--55
+[][] 
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
+[2
+
+
+ <./by-sa.pdf> <./by.pdf> <./sa.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
+ (./exercices.aux
+(./serie1-exercices.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
 Package rerunfilecheck Info: File `exercices.out' has not changed.
 (rerunfilecheck)             Checksum: C85981C49598172406588BFA625E6859;145.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 21.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
  ) 
 Here is how much of TeX's memory you used:
- 19582 strings out of 493485
- 345940 string characters out of 3143527
- 478166 words of memory out of 3000000
- 22497 multiletter control sequences out of 15000+200000
- 9498 words of font info for 36 fonts, out of 3000000 for 9000
+ 19772 strings out of 493485
+ 348492 string characters out of 3143527
+ 479249 words of memory out of 3000000
+ 22672 multiletter control sequences out of 15000+200000
+ 9806 words of font info for 37 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 65i,5n,71p,427b,325s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on exercices.pdf (1 page, 64544 bytes).
+ 65i,11n,71p,427b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb>
+Output written on exercices.pdf (2 pages, 87592 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 29 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 80 PDF objects out of 1000 (max. 8388607)
+ 63 compressed objects within 1 object stream
+ 10 named destinations out of 1000 (max. 500000)
+ 44 words of extra memory for PDF output out of 10000 (max. 10000000)
 

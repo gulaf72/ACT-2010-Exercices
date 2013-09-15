@@ -3,8 +3,14 @@
     (LaTeX-add-labels
      "sec:serie-dexercices-1"
      "sec:exercice-1-1"
-     "fig:exercice1-graph1")
+     "fig:exercice1-graph1"
+     "fig:exercice1-graph2"
+     "fig:exercice1-graph3"
+     "fig:exercice1-graph4")
     (TeX-run-style-hooks
+     "tabularx"
+     "ccicons"
+     "scale=2"
      "scrtime"
      "hyperref"
      "float"
