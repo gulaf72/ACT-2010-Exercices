@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  15 SEP 2013 12:36
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  18 SEP 2013 23:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1007,14 +1007,20 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 10.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-)) [1
+) [1
 
 
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<by-sa.pdf, id=31, 121.45375pt x 43.16125pt>
+Underfull \hbox (badness 10000) in paragraph at lines 47--50
+
+ []
+
+) [2
+
+] <by-sa.pdf, id=39, 121.45375pt x 43.16125pt>
 File: by-sa.pdf Graphic file (type pdf)
  <use by-sa.pdf>
 Package pdftex.def Info: by-sa.pdf used on input line 25.
@@ -1027,8 +1033,8 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 34.
 
-<by.pdf, id=33, 56.21pt x 56.21pt> <use by.pdf>
-<sa.pdf, id=34, 56.21pt x 56.21pt> <use sa.pdf> <use by.pdf> <use sa.pdf>
+<by.pdf, id=41, 56.21pt x 56.21pt> <use by.pdf>
+<sa.pdf, id=42, 56.21pt x 56.21pt> <use sa.pdf> <use by.pdf> <use sa.pdf>
 File: by.pdf Graphic file (type pdf)
 
 <use by.pdf>
@@ -1044,7 +1050,7 @@ Overfull \hbox (17.0pt too wide) in paragraph at lines 54--55
  []
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
-[2
+[3
 
 
  <./by-sa.pdf> <./by.pdf> <./sa.pdf>]
@@ -1054,14 +1060,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
 Package rerunfilecheck Info: File `exercices.out' has not changed.
-(rerunfilecheck)             Checksum: C85981C49598172406588BFA625E6859;145.
+(rerunfilecheck)             Checksum: 17DFDDEFFA59E6257FCB463077D14FE9;203.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
  ) 
 Here is how much of TeX's memory you used:
- 19772 strings out of 493485
- 348492 string characters out of 3143527
- 479249 words of memory out of 3000000
- 22672 multiletter control sequences out of 15000+200000
+ 19775 strings out of 493485
+ 348528 string characters out of 3143527
+ 482249 words of memory out of 3000000
+ 22673 multiletter control sequences out of 15000+200000
  9806 words of font info for 37 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  65i,11n,71p,427b,375s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1072,10 +1078,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb>
-Output written on exercices.pdf (2 pages, 87592 bytes).
+Output written on exercices.pdf (3 pages, 89735 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 44 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 88 PDF objects out of 1000 (max. 8388607)
+ 70 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 52 words of extra memory for PDF output out of 10000 (max. 10000000)
 

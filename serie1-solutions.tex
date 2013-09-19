@@ -36,7 +36,7 @@
 > xtable(Yt.ts,digits=1) 
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -65,7 +65,7 @@
 > xtable(Zt.ts <- diff(Yt.ts,12),digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -94,7 +94,7 @@
 > xtable(Yt.ts-Zt.ts,digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -125,7 +125,7 @@ Moyenne mobile avec $q=1$
 > xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -147,7 +147,7 @@ Moyenne mobile avec $q=5$
 > xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -169,7 +169,7 @@ Lissage exponentiel double avec $\alpha=0.75$
 > xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -208,7 +208,7 @@ Coefficients:
 > xtable(mt4 <- ts(coeff1[1]+t*coeff1[2],start=c(2009,7),deltat=1/12),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Sun Sep 15 12:54:29 2013
+% Wed Sep 18 23:20:30 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -255,6 +255,40 @@ Le taux d'inflation prejeté en décembre 2013 est 2.14\%\\
 Le montant projeté des achats de cadeaux en décembre 2013 est 688.41 \$
 
 \clearpage 
+\subsection{Incendies}
+
+On remarque d'abord que $q=2$.
+
+On peut ensuite poser les équations suivantes:
+\begin{align}
+  \label{eq:1}
+  4+3+a+b+2 &= 24\\
+  b+2+4+6+c &= 26\\
+  c+0+2+8+3 &= 19
+\end{align}
+
+En résolvant, on obtient la solution.\\
+
+\textbf{Solution:}\\
+
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|l|}{Mois} & \multicolumn{1}{l|}{Incendies} & \multicolumn{1}{l|}{Moyenne Mobile} \\ \hline
+1 & 4 & \multicolumn{1}{l|}{-} \\ \hline
+2 & 3 & \multicolumn{1}{l|}{-} \\ \hline
+3 & \textbf{7} & 4,8 \\ \hline
+4 & \textbf{8} & 4,8 \\ \hline
+5 & 2 & 5,4 \\ \hline
+6 & 4 & 5,2 \\ \hline
+7 & 6 & 3,6 \\ \hline
+8 & \textbf{6} & 3,6 \\ \hline
+9 & 0  & 4,4 \\ \hline
+10 & 2 & 3,8 \\ \hline
+11 & 8 & \multicolumn{1}{l|}{-} \\ \hline
+12 & 3 & \multicolumn{1}{l|}{-} \\ \hline
+\end{tabular}
+
+\clearpage
 
 Document généré le \today \ à \ \thistime 
 

@@ -139,6 +139,40 @@ depense.dec.2013 <- 674*(1+taux.inf.dec.2013/100)
 Le montant projeté des achats de cadeaux en décembre 2013 est \Sexpr{round(depense.dec.2013,2)} \$
 
 \clearpage 
+\subsection{Incendies}
+
+On remarque d'abord que $q=2$.
+
+On peut ensuite poser les équations suivantes:
+\begin{align}
+  \label{eq:1}
+  4+3+a+b+2 &= 24\\
+  b+2+4+6+c &= 26\\
+  c+0+2+8+3 &= 19
+\end{align}
+
+En résolvant, on obtient la solution.\\
+
+\textbf{Solution:}\\
+
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|l|}{Mois} & \multicolumn{1}{l|}{Incendies} & \multicolumn{1}{l|}{Moyenne Mobile} \\ \hline
+1 & 4 & \multicolumn{1}{l|}{-} \\ \hline
+2 & 3 & \multicolumn{1}{l|}{-} \\ \hline
+3 & \textbf{7} & 4,8 \\ \hline
+4 & \textbf{8} & 4,8 \\ \hline
+5 & 2 & 5,4 \\ \hline
+6 & 4 & 5,2 \\ \hline
+7 & 6 & 3,6 \\ \hline
+8 & \textbf{6} & 3,6 \\ \hline
+9 & 0  & 4,4 \\ \hline
+10 & 2 & 3,8 \\ \hline
+11 & 8 & \multicolumn{1}{l|}{-} \\ \hline
+12 & 3 & \multicolumn{1}{l|}{-} \\ \hline
+\end{tabular}
+
+\clearpage
 
 Document généré le \today \ à \ \thistime 
 
