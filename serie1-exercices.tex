@@ -86,6 +86,31 @@ sont manquantes. Identifiez ces données.\\
 \end{tabular}
 
 \clearpage
+\subsection{Option de vente}
+
+Nous sommes le 20 juin 2013, à l'heure de la fermeture des marchés
+financiers. Vous possédez un titre de la compagnie BlackBerry dont la
+valeur est de $S_0 = 13,82$. Un analyste vous suggère d'acheter une
+option de vente européenne d'échéance 3 mois avec un prix d'exercice
+équivalant à la valeur d'un contrat à terme de même échéance afin de
+couvrir le risque de baisse de la valeur de ce titre. On considère des
+rendements mensuels et un taux sans risque composé continument de
+1,75\%.  En utilisant les logarithmes des valeurs historique à la
+fermeture du titre (prendre le jour précédent si le 20 du mois n'est
+pas un jour ouvré) disponibles dans le fichier \emph{blackberry.csv},
+ainsi que la méthode de différenciation, évaluez la composante de
+tendance $m_t$ qui équivaut aux rendements du titre. Ensuite, en
+évaluant la moyenne et l'écart-type de cette composante, il est
+possible d'estimer la tendance linéaire $\mu$ et la volatilité
+$\sigma$ mensuelles de la série des rendements. En supposant que le
+prix peut prendre deux valeurs après 3 mois, soit $S_0u = S_0
+e^{3(\mu+\sigma^2/2)}$ et $S_0d = S_0 e^{3(\mu-\sigma^2/2)}$, évaluez
+le prix de l'option de vente en utilisant la probabilité neutre au
+risque $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
+effectuerez en exercant l'option de vente le 20 septembre 2013,
+considérant que vous empruntez au taux $r+2\%$ pour acheter l'option.
+
+\clearpage
 
 \includegraphics[height=7mm,keepaspectratio=true]{by-sa}\\%
 Cette création est mise à disposition selon le contrat
@@ -93,8 +118,7 @@ Cette création est mise à disposition selon le contrat
   Paternité-Partage à l'identique 2.5 Canada} de Creative Commons
 disponible à l'adresse \\
 http://creativecommons.org/licenses/by-sa/2.5/ca/deed.fr \\
-En vertu de
-ce contrat, vous êtes libre de:
+En vertu de ce contrat, vous êtes libre de:
 \begin{itemize}
 \item \textbf{partager} --- reproduire, distribuer et communiquer
   l'{\oe}uvre;
