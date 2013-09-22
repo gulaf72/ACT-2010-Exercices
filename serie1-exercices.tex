@@ -22,7 +22,7 @@
 \section{Méthodes de lissage et saisonnalité}
 \label{sec:serie-dexercices-1}
 
-\subsection{Noël s'en vient !}
+\subsection{Noël s'en vient ! (Informatique)}
 \label{sec:exercice-1-1}
 
 On considère les taux d'inflation sur 12 mois disponibles dans le
@@ -62,7 +62,7 @@ décembre 2013.
 \end{enumerate}
 
 \clearpage
-\subsection{Incendies}
+\subsection{Incendies (Calculatrice)}
 
 On a estimé la tendance d’un ensemble de données d’incendie pour une
 année. Cependant, suite à un problème informatique, certaines données
@@ -86,27 +86,27 @@ sont manquantes. Identifiez ces données.\\
 \end{tabular}
 
 \clearpage
-\subsection{Option de vente}
+\subsection{Option de vente (Calculatrice)}
 
-Nous sommes le 20 juin 2013, à l'heure de la fermeture des marchés
+Nous sommes le 28 juin 2013, à l'heure de la fermeture des marchés
 financiers. Vous possédez un titre de la compagnie BlackBerry dont la
-valeur est de $S_0 = 13,82$. Un analyste vous suggère d'acheter une
-option de vente européenne d'échéance 3 mois avec un prix d'exercice
+valeur est de $S_0 = 10.46$. Un analyste vous suggère d'acheter une
+option de vente européenne d'échéance de 84 jours ($t=84/365$) avec un prix d'exercice
 équivalant à la valeur d'un contrat à terme de même échéance afin de
 couvrir le risque de baisse de la valeur de ce titre. On considère des
-rendements mensuels et un taux sans risque composé continument de
-1,75\%.  En utilisant les logarithmes des valeurs historique à la
-fermeture du titre (prendre le jour précédent si le 20 du mois n'est
-pas un jour ouvré) disponibles dans le fichier \emph{blackberry.csv},
-ainsi que la méthode de différenciation, évaluez la composante de
-tendance $m_t$ qui équivaut aux rendements du titre. Ensuite, en
-évaluant la moyenne et l'écart-type de cette composante, il est
-possible d'estimer la tendance linéaire $\mu$ et la volatilité
-$\sigma$ mensuelles de la série des rendements. En supposant que le
-prix peut prendre deux valeurs après 3 mois, soit $S_0u = S_0
-e^{3(\mu+\sigma^2/2)}$ et $S_0d = S_0 e^{3(\mu-\sigma^2/2)}$, évaluez
-le prix de l'option de vente en utilisant la probabilité neutre au
-risque $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
+rendements sur une période de 28 jours et un taux sans risque composé
+continument de $r=1.75\%$.  En utilisant les logarithmes des valeurs
+historique à la fermeture du titre disponibles dans le fichier
+\emph{blackberry.csv}, ainsi que la méthode de différenciation,
+évaluez les rendements mensuels du titre, qui correspondent aux
+résidus de ce processus différentié. Ensuite, en évaluant la moyenne
+et l'écart-type de cette composante, il est possible d'estimer la
+tendance linéaire $\mu$ et la volatilité $\sigma$ mensuelles de la
+série des rendements. En supposant que le prix peut prendre deux
+valeurs après 3 mois, soit $S_0u = S_0 e^{3(\mu+\sigma/(2\sqrt{3}))}$
+et $S_0d = S_0 e^{3(\mu-\sigma/(2\sqrt{3}))}$, évaluez le prix de
+l'option de vente en utilisant la probabilité neutre au risque d'une
+hausse $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
 effectuerez en exercant l'option de vente le 20 septembre 2013,
 considérant que vous empruntez au taux $r+2\%$ pour acheter l'option.
 

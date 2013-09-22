@@ -174,6 +174,47 @@ En résolvant, on obtient la solution.\\
 
 \clearpage
 
+\subsection{Option de vente}
+
+<<>>=
+rf <- 0.0175
+rB <- rf+0.02
+S0 <- 10.46
+ST <- 8.73
+K <- S0*exp(rf*84/365)
+
+bbry <- read.csv("blackberry.csv",header=TRUE,sep=";")
+bbry.sel <- bbry[as.POSIXlt(bbry$Date)$wday==5,][1+3:12*4,]$Close 
+                                        #Extraire le prix un vendredi sur 4
+l.bbry.sel <- log(bbry.sel)
+(diff.l.bbry.sel <- diff(l.bbry.sel)) 
+                                        #On obtient la série des rendements
+                                        #mensuels
+(mu.diff.l.bbry.sel <- mean(diff.l.bbry.sel))
+(sigma.diff.l.bbry.sel <- sd(diff.l.bbry.sel))
+                                        #Moyenne et écart-type des rendements 
+                                        #mensuels
+(prix.arbre <- S0*(ud <- exp(3*(mu.diff.l.bbry.sel+c(1,-1)*
+                                sigma.diff.l.bbry.sel/(2*sqrt(3))))))
+                                        #Prix de l'arbre binomial
+(p.rn <- (exp(rf*84/365)-ud[2])/(ud[1]-ud[2]))
+                                        #Probabilité neutre au risque
+q.rn <- 1-p.rn
+(P0 <- sum(exp(-rf*84/365)*(c(p.rn,q.rn)*pmax(K-prix.arbre,0))))
+                                        #Prix de l'option de vente
+(BT <- P0*exp(rB*84/365)) #Montant emprunté avec intérêts
+(K-ST)-BT  #Profit
+@ 
+
+La valeur du paramètre $\mu$ de rendement moyen est \Sexpr{round(mu.diff.l.bbry.sel,digits=4)}.
+La valeur du paramètre $\sigma$ de volatilité est \Sexpr{round(sigma.diff.l.bbry.sel,digits=4)}.
+La valeur des prix de l'arbre binomial sont \Sexpr{round(prix.arbre[1],digits=4)} et \Sexpr{round(prix.arbre[2],digits=4)}.
+La valeur de la probabilité neutre au risque d'une hausse est \Sexpr{round(p.rn,digits=4)}.
+La valeur de l'option est \Sexpr{round(P0,digits=4)}.
+Le profit, qui correspont à la différence entre la réclamation contingente de l'option et le coût d'acquisition, est de \Sexpr{round((K-ST)-BT,digits=4)}.
+
+\clearpage
+
 Document généré le \today \ à \ \thistime 
 
 \clearpage
