@@ -61,7 +61,6 @@ décembre 2013.
   prédire le montant dépensé pour l'achat de cadeaux en décembre 2013.
 \end{enumerate}
 
-\clearpage
 \subsection{Incendies (Calculatrice)}
 
 On a estimé la tendance d’un ensemble de données d’incendie pour une
@@ -85,7 +84,6 @@ sont manquantes. Identifiez ces données.\\
   12 & 3 & \multicolumn{1}{l|}{-} &  \\ \hline
 \end{tabular}
 
-\clearpage
 \subsection{Option de vente (Calculatrice)}
 
 Nous sommes le 28 juin 2013, à l'heure de la fermeture des marchés
@@ -109,6 +107,46 @@ l'option de vente en utilisant la probabilité neutre au risque d'une
 hausse $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
 effectuerez en exercant l'option de vente le 20 septembre 2013,
 considérant que vous empruntez au taux $r+2\%$ pour acheter l'option.
+
+\subsection{Lissage exponentiel (Calculatrice)}
+
+On considère un ensemble de 10 observations:
+\[
+\mathcal{A}=\left\{1.2,1.5,1.4,2.1,1.8,1.9,2.2,2.4,2.0,1.9 \right\}
+\]
+
+En utilisant une méthode de lissage exponentiel avec $\alpha=0.4$ et
+$\alpha=0.7$, déterminez laquelle des méthodes produit la moins grande
+erreur quadratique moyenne.
+
+\subsection{Lissage exponentiel (Informatique)}
+
+En utilisant les données du problème précédent, déterminez, à l'aide
+d'un algorithme informatique, la valeur de $\alpha$ qui minimise
+l'erreur quadratique moyenne.
+
+\subsection{Bank of America}
+
+On considère les 20 observations de la valeur ajustée à la fermeture (valeur qui tient compte des dividendes) du titre de la Bank of America pour chaque lundi entre le 20 mai 2013 et le 30 septembre 2013.
+
+\begin{enumerate}
+\item En utilisant le test du corrélogramme avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
+
+\item En utilisant le test du changement de direction, déterminez s'il s'agit d'une série stationnaire.
+
+\item En utilisant le test de Portmanteau avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
+
+\item Est-ce que ces tests sont équivalents ? Commentez.
+
+\item En utilisant la différenciation et le logarithme des données, évaluez la série des rendements hebdomadaires.
+
+\item En utilisant le même principe que pour la moyenne mobile, évaluez la variance mobile de la série précédente avec $q=2$. Que remarquez-vous ? Peut-on affirmer que c'est une série stationnaire à l'aide du test de Portmanteau avec  un seuil de tolérance de $\alpha = 10\%$?
+\end{enumerate}
+
+\subsection{Variance d'une série non-stationnaire}
+\label{sec:variance-dune-serie}
+
+Une série présentant une racine unitaire se présente sous la forme $Y_t = Y_{t-1}+\epsilon_t$. Quelle est la différence entre la variance du 5e terme et du 7e terme de cette série si $\epsilon_t \sim N(0,t^2)$?
 
 \clearpage
 

@@ -2,7 +2,8 @@
  (lambda ()
     (LaTeX-add-labels
      "sec:serie-dexercices-1"
-     "sec:exercice-1-1")
+     "sec:exercice-1-1"
+     "sec:variance-dune-serie")
     (TeX-run-style-hooks
      "tabularx"
      "ccicons"
