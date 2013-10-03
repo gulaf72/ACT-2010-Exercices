@@ -7,7 +7,8 @@
      "fig:exercice1-graph2"
      "fig:exercice1-graph3"
      "fig:exercice1-graph4"
-     "eq:1")
+     "eq:1"
+     "eq:2")
     (TeX-run-style-hooks
      "tabularx"
      "ccicons"

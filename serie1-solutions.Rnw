@@ -21,21 +21,23 @@
 \label{sec:exercice-1-1}
 
 <<>>= 
-library(xtable) 
-library(TTR)
-Yt <- read.csv("inflation.csv",header=TRUE,sep="\t")[,2] 
-Yt.ts <-ts(Yt,start=c(2008,7),deltat=1/12) 
+library(xtable) # Librairie contenant la fonction xtable permettant de 
+                                        #générer des tables an LaTeX
+library(TTR) ## Librairie contenant les outils de lissage de données
+
+Yt <- read.csv("inflation.csv",header=TRUE,sep="\t")[,2] ## Importer les données
+Yt.ts <-ts(Yt,start=c(2008,7),deltat=1/12) ## Définir la série chronologique
 @
 
 \textbf{Tableau des données} 
 <<results=tex>>= 
-xtable(Yt.ts,digits=1) 
+xtable(Yt.ts,digits=1) ## Générer une table LaTeX
 @
 <<echo=FALSE>>= 
 pdf("exercice1-graph1.pdf",paper="special", width=6,
-height=6) 
+height=6) ## Générer le fichier PDF contenant le graphique
 plot(Yt.ts) 
-dummy <- dev.off() 
+dummy <- dev.off() ## Fermer le fichier PDF
 @ 
 \begin{figure}[p]
   \centering
@@ -82,25 +84,28 @@ dummy <- dev.off()
 \clearpage
 \textbf{Élimination de la tendance}
 
-Moyenne mobile avec $q=1$
+Moyenne mobile avec $q=1$. Comme la fonction \emph{SMA()} utilise les $2q+1$ 
+données précédentes et que nous voulons une moyenne mobile centrée, nous devons utiliser l'opérateur de rétrodécalage $B()$ pour décaler la série.
+
 <<results=tex>>=
-xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2)
+xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2) ## Simple Moving Average(q=1)
 @
 \clearpage 
 Moyenne mobile avec $q=5$
 <<results=tex>>=
-xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2)
+xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2) ## Simple Moving Average(q=5)
 @ 
 \clearpage 
 Lissage exponentiel double avec $\alpha=0.75$
 <<results=tex>>=
-xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2)
+xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2) ## Double Exponential 
+                                                  ## Moving Average
 @ 
 \clearpage 
 Régression linéaire
 <<>>=
 t <- 0:48
-(lm1 <- lm(Zt.ts~t))
+(lm1 <- lm(Zt.ts~t)) ## Modèle de régression sur une variable
 coeff1 <- coefficients(lm1)
 @
 <<results=tex>>=
@@ -215,7 +220,73 @@ Le profit, qui correspont à la différence entre la réclamation contingente de
 
 \clearpage
 
-Document généré le \today \ à \ \thistime 
+\subsection{Lissage exponentiel I}
+
+On calcule d'abord les deux séries lissées \\
+
+\begin{tabular}{|l|r|r|}
+\hline
+\multicolumn{1}{|c|}{$\mathcal{A}$} & $\alpha=0,4$ & $\alpha=0,7$ \\ \hline
+1,2 & 1,2000 & 1,2000 \\ \hline
+1,5 & 1,3200 & 1,4100 \\ \hline
+1,4 & 1,3520 & 1,4030 \\ \hline
+2,1 & 1,6512 & 1,8909 \\ \hline
+1,8 & 1,7107 & 1,8273 \\ \hline
+1,9 & 1,7864 & 1,8782 \\ \hline
+2,2 & 1,9519 & 2,1035 \\ \hline
+2,4 & 2,1311 & 2,3110 \\ \hline
+2,0 & 2,0787 & 2,0933 \\ \hline
+1,9 & 2,0072 & 1,9580 \\ \hline
+\end{tabular} \\
+
+On évalue ensuite l'erreur quadratique pour chaque terme \\
+
+\begin{tabular}{|l|r|r|}
+\hline
+\multicolumn{1}{|c|}{$\mathcal{A}$} & \multicolumn{1}{l|}{$SE(\alpha=0,4)$} & \multicolumn{1}{l|}{$SE(\alpha=0,7)$} \\ \hline
+1,2 & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+1,5 & 0,0324 & 0,0081 \\ \hline
+1,4 & 0,0023 & 0,0000 \\ \hline
+2,1 & 0,2014 & 0,0437 \\ \hline
+1,8 & 0,0080 & 0,0007 \\ \hline
+1,9 & 0,0129 & 0,0005 \\ \hline
+2,2 & 0,0616 & 0,0093 \\ \hline
+2,4 & 0,0723 & 0,0079 \\ \hline
+2,0 & 0,0062 & 0,0087 \\ \hline
+1,9 & 0,0115 & 0,0034 \\ \hline
+\end{tabular} \\
+
+On obtient enfin l'erreur quadratique moyenne\\
+
+\begin{tabular}{|l|l|l|}
+\hline
+ & $\alpha=0,4$ & $\alpha=0,7$ \\ \hline
+MSE & \multicolumn{1}{r|}{0,0454} & \multicolumn{1}{r|}{0,0092} \\ \hline
+\end{tabular} \\
+
+Les calculs effectués se trouvent dans le fichier \url{Lissage.Exponentiel.I.ods} \footnote{Ce fichier est au format OpenDocument et s'ouvre avec la plupart des suites bureautiques}.
+
+\subsection{Lissage exponentiel II}
+
+Une solution assez simple est d'utiliser le solveur intégré au logiciel tableau que vous utilisez et d'optimiser la valeur de la cellule contenant $\alpha$ avec comme critère de minimisation la cellule contenant l'erreur quadratique moyenne (MSE).
+
+On peut aussi construire une fonction d'optimisation dans R qui réplique le comportement du chiffrier que nous avons construit dans le logiciel tableur.
+
+(détail à venir)
+
+\subsection{Bank of America}
+
+(détail à venir)
+
+\subsection{Variance d'une série non-stationnaire}
+
+La variance du $t^e$ terme est équivalente à la somme de la variance des $t$ premiers termes d'erreurs. La différence entre les variances des $5^e$ terme et du $7^e$ terme est donc égale à la somme:
+\begin{align*}
+  \label{eq:2}
+  V\left[\epsilon_6\right]+V\left[\epsilon_7\right] &= 0.1(6^2+7^2) \\
+  & = 8.5
+\end{align*}
+
 
 \clearpage
 
@@ -225,14 +296,17 @@ Cette création est mise à disposition selon le contrat
   Paternité-Partage à l'identique 2.5 Canada} de Creative Commons
 disponible à l'adresse \\
 http://creativecommons.org/licenses/by-sa/2.5/ca/deed.fr \\
+
 En vertu de ce contrat, vous êtes libre de:
+
 \begin{itemize}
 \item \textbf{partager} --- reproduire, distribuer et communiquer
   l'{\oe}uvre;
 \item \textbf{remixer} --- adapter l'{\oe}uvre;
 \item utiliser cette {\oe}uvre à des fins commerciales.
 \end{itemize}
-Selon les conditions suivantes:
+
+Selon les conditions suivantes:\\
 
   \begin{tabularx}{\linewidth}{@{}lX@{}}
     \raisebox{-9mm}[0mm][13mm]{%
@@ -248,4 +322,6 @@ Selon les conditions suivantes:
     votre création que sous une licence identique ou similaire à
     celle-ci.
   \end{tabularx}
+\clearpage
+Document généré le \today \ à \ \thistime 
 \end{document}

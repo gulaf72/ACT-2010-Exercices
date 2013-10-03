@@ -26,7 +26,7 @@
 \label{sec:exercice-1-1}
 
 On considère les taux d'inflation sur 12 mois disponibles dans le
-fichier cg130823a001-fra.csv. On représente cette série chronologique
+fichier \url{cg130823a001-fra.csv}. On représente cette série chronologique
 par la variable aléatoire $Y_t$. L'an passé, les Canadiens ont dépensé
 en moyenne $674\$$ en cadeaux au mois de décembre 2012. Notre objectif
 est de prévoir quel sera le montant dépensé pour l'achat de cadeaux en
@@ -95,7 +95,7 @@ couvrir le risque de baisse de la valeur de ce titre. On considère des
 rendements sur une période de 28 jours et un taux sans risque composé
 continument de $r=1.75\%$.  En utilisant les logarithmes des valeurs
 historique à la fermeture du titre disponibles dans le fichier
-\emph{blackberry.csv}, ainsi que la méthode de différenciation,
+\url{blackberry.csv}, ainsi que la méthode de différenciation,
 évaluez les rendements mensuels du titre, qui correspondent aux
 résidus de ce processus différentié. Ensuite, en évaluant la moyenne
 et l'écart-type de cette composante, il est possible d'estimer la
@@ -108,7 +108,7 @@ hausse $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
 effectuerez en exercant l'option de vente le 20 septembre 2013,
 considérant que vous empruntez au taux $r+2\%$ pour acheter l'option.
 
-\subsection{Lissage exponentiel (Calculatrice)}
+\subsection{Lissage exponentiel I (Calculatrice)}
 
 On considère un ensemble de 10 observations:
 \[
@@ -117,17 +117,17 @@ On considère un ensemble de 10 observations:
 
 En utilisant une méthode de lissage exponentiel avec $\alpha=0.4$ et
 $\alpha=0.7$, déterminez laquelle des méthodes produit la moins grande
-erreur quadratique moyenne.
+erreur quadratique moyenne (MSE).
 
-\subsection{Lissage exponentiel (Informatique)}
+\subsection{Lissage exponentiel II (Informatique)}
 
 En utilisant les données du problème précédent, déterminez, à l'aide
 d'un algorithme informatique, la valeur de $\alpha$ qui minimise
-l'erreur quadratique moyenne.
+l'erreur quadratique moyenne (MSE).
 
-\subsection{Bank of America}
+\subsection{Bank of America (calculatrice)}
 
-On considère les 20 observations de la valeur ajustée à la fermeture (valeur qui tient compte des dividendes) du titre de la Bank of America pour chaque lundi entre le 20 mai 2013 et le 30 septembre 2013.
+On considère les 20 observations de la valeur ajustée à la fermeture (valeur qui tient compte des dividendes) du titre de la Bank of America pour chaque lundi entre le 20 mai 2013 et le 30 septembre 2013. Ces données se trouvent dans le fichier \url{BoA.csv}.
 
 \begin{enumerate}
 \item En utilisant le test du corrélogramme avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
@@ -143,10 +143,10 @@ On considère les 20 observations de la valeur ajustée à la fermeture (valeur 
 \item En utilisant le même principe que pour la moyenne mobile, évaluez la variance mobile de la série précédente avec $q=2$. Que remarquez-vous ? Peut-on affirmer que c'est une série stationnaire à l'aide du test de Portmanteau avec  un seuil de tolérance de $\alpha = 10\%$?
 \end{enumerate}
 
-\subsection{Variance d'une série non-stationnaire}
+\subsection{Variance d'une série non-stationnaire (théorique)}
 \label{sec:variance-dune-serie}
 
-Une série présentant une racine unitaire se présente sous la forme $Y_t = Y_{t-1}+\epsilon_t$. Quelle est la différence entre la variance du 5e terme et du 7e terme de cette série si $\epsilon_t \sim N(0,t^2)$?
+Une série présentant une racine unitaire se présente sous la forme $Y_t = Y_{t-1}+\epsilon_t$. Quelle est la différence entre la variance du $5^e$ terme et du $7^e$ terme de cette série si $\epsilon_t \sim N(0, 0.1t^2)$?
 
 \clearpage
 
@@ -156,14 +156,17 @@ Cette création est mise à disposition selon le contrat
   Paternité-Partage à l'identique 2.5 Canada} de Creative Commons
 disponible à l'adresse \\
 http://creativecommons.org/licenses/by-sa/2.5/ca/deed.fr \\
-En vertu de ce contrat, vous êtes libre de:
+
+En vertu de ce contrat, vous êtes libre de :
+
 \begin{itemize}
 \item \textbf{partager} --- reproduire, distribuer et communiquer
   l'{\oe}uvre;
 \item \textbf{remixer} --- adapter l'{\oe}uvre;
 \item utiliser cette {\oe}uvre à des fins commerciales.
 \end{itemize}
-Selon les conditions suivantes:
+
+Selon les conditions suivantes:\\
 
   \begin{tabularx}{\linewidth}{@{}lX@{}}
     \raisebox{-9mm}[0mm][13mm]{%
