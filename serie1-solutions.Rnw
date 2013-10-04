@@ -266,14 +266,40 @@ MSE & \multicolumn{1}{r|}{0,0454} & \multicolumn{1}{r|}{0,0092} \\ \hline
 
 Les calculs effectués se trouvent dans le fichier \url{Lissage.Exponentiel.I.ods} \footnote{Ce fichier est au format OpenDocument et s'ouvre avec la plupart des suites bureautiques}.
 
+Avec R, on obtient les résultats suivants en utilisant la fonction de lissage exponentiel \emph{EMA()}.
+
+<<>>=
+A <- c(1.2, 1.5, 1.4, 2.1, 1.8, 1.9, 2.2, 2.4, 2.0, 1.9)
+n.A <- length(A)
+A.EMA.4 <- EMA(A,n=1,ratio=0.4)
+A.EMA.7 <- EMA(A,n=1,ratio=0.7)
+A.SE <- (A-cbind(A.EMA.4,A.EMA.7))^2
+cbind(A,A.EMA.4,A.EMA.7,A.SE)
+(A.MSE <- colMeans(A.SE)*(n.A/(n.A-1)))
+@ 
+
+La valeur $\alpha=0.7$ produit une erreur quadratique moyenne inférieure.
+
 \subsection{Lissage exponentiel II}
 
 Une solution assez simple est d'utiliser le solveur intégré au logiciel tableau que vous utilisez et d'optimiser la valeur de la cellule contenant $\alpha$ avec comme critère de minimisation la cellule contenant l'erreur quadratique moyenne (MSE).
 
 On peut aussi construire une fonction d'optimisation dans R qui réplique le comportement du chiffrier que nous avons construit dans le logiciel tableur.
 
-(détail à venir)
+<<>>=
+funOptAlphaDEMA <- function(alpha,data)
+  {
+    data.n <- length(data)
+    data.DEMA <- DEMA(A,n=1,ratio=alpha)
+    data.SE <- (data-data.DEMA)^2
+    data.MSE <- mean(data.SE)*data.n/(data.n-1)
+    print(c(data.MSE,alpha))
+    data.MSE
+  }
+optimize(funOptAlphaDEMA,c(0.4,0.7),A)
+@ 
 
+Tout comme pour le lissage exponentiel effectué à la question précédente, la valeur $\alpha=0.7$ produit une erreur quadratique moyenne inférieure.
 \subsection{Bank of America}
 
 (détail à venir)

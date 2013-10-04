@@ -37,7 +37,7 @@
 > xtable(Yt.ts,digits=1) ## Générer une table LaTeX
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -66,7 +66,7 @@
 > xtable(Zt.ts <- diff(Yt.ts,12),digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -95,7 +95,7 @@
 > xtable(Yt.ts-Zt.ts,digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -128,7 +128,7 @@ données précédentes et que nous voulons une moyenne mobile centrée, nous dev
 > xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2) ## Simple Moving Average(q=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -150,7 +150,7 @@ Moyenne mobile avec $q=5$
 > xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2) ## Simple Moving Average(q=5)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -172,7 +172,7 @@ Lissage exponentiel double avec $\alpha=0.75$
 > xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2) ## Double Exponential 
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -214,7 +214,7 @@ Coefficients:
 > xtable(mt4 <- ts(coeff1[1]+t*coeff1[2],start=c(2009,7),deltat=1/12),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Wed Oct  2 23:18:06 2013
+% Thu Oct  3 22:03:52 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -423,14 +423,89 @@ MSE & \multicolumn{1}{r|}{0,0454} & \multicolumn{1}{r|}{0,0092} \\ \hline
 
 Les calculs effectués se trouvent dans le fichier \url{Lissage.Exponentiel.I.ods} \footnote{Ce fichier est au format OpenDocument et s'ouvre avec la plupart des suites bureautiques}.
 
+Avec R, on obtient les résultats suivants en utilisant la fonction de lissage exponentiel \emph{EMA()}.
+
+\begin{Schunk}
+\begin{Sinput}
+> A <- c(1.2, 1.5, 1.4, 2.1, 1.8, 1.9, 2.2, 2.4, 2.0, 1.9)
+> n.A <- length(A)
+> A.EMA.4 <- EMA(A,n=1,ratio=0.4)
+> A.EMA.7 <- EMA(A,n=1,ratio=0.7)
+> A.SE <- (A-cbind(A.EMA.4,A.EMA.7))^2
+> cbind(A,A.EMA.4,A.EMA.7,A.SE)
+\end{Sinput}
+\begin{Soutput}
+        A  A.EMA.4  A.EMA.7     A.EMA.4      A.EMA.7
+ [1,] 1.2 1.200000 1.200000 0.000000000 0.0000000000
+ [2,] 1.5 1.320000 1.410000 0.032400000 0.0081000000
+ [3,] 1.4 1.352000 1.403000 0.002304000 0.0000090000
+ [4,] 2.1 1.651200 1.890900 0.201421440 0.0437228100
+ [5,] 1.8 1.710720 1.827270 0.007970918 0.0007436529
+ [6,] 1.9 1.786432 1.878181 0.012897691 0.0004760688
+ [7,] 2.2 1.951859 2.103454 0.061573857 0.0093210722
+ [8,] 2.4 2.131116 2.311036 0.072298864 0.0079145417
+ [9,] 2.0 2.078669 2.093311 0.006188861 0.0087069216
+[10,] 1.9 2.007202 1.957993 0.011492180 0.0033632189
+\end{Soutput}
+\begin{Sinput}
+> (A.MSE <- colMeans(A.SE)*(n.A/(n.A-1)))
+\end{Sinput}
+\begin{Soutput}
+   A.EMA.4    A.EMA.7 
+0.04539420 0.00915081 
+\end{Soutput}
+\end{Schunk}
+
+La valeur $\alpha=0.7$ produit une erreur quadratique moyenne inférieure.
+
 \subsection{Lissage exponentiel II}
 
 Une solution assez simple est d'utiliser le solveur intégré au logiciel tableau que vous utilisez et d'optimiser la valeur de la cellule contenant $\alpha$ avec comme critère de minimisation la cellule contenant l'erreur quadratique moyenne (MSE).
 
 On peut aussi construire une fonction d'optimisation dans R qui réplique le comportement du chiffrier que nous avons construit dans le logiciel tableur.
 
-(détail à venir)
+\begin{Schunk}
+\begin{Sinput}
+> funOptAlphaDEMA <- function(alpha,data)
++   {
++     data.n <- length(data)
++     data.DEMA <- DEMA(A,n=1,ratio=alpha)
++     data.SE <- (data-data.DEMA)^2
++     data.MSE <- mean(data.SE)*data.n/(data.n-1)
++     print(c(data.MSE,alpha))
++     data.MSE
++   }
+> optimize(funOptAlphaDEMA,c(0.4,0.7),A)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.006416607 0.514589803
+[1] 0.003674206 0.585410197
+[1] 0.002489337 0.629179607
+[1] 0.001912478 0.656230590
+[1] 0.001607733 0.672949017
+[1] 0.001437559 0.683281573
+[1] 0.001338969 0.689667444
+[1] 0.00128047 0.69361413
+[1] 0.001245226 0.696053315
+[1] 0.001223788 0.697560814
+[1] 0.001210668 0.698492500
+[1] 0.001202609 0.699068314
+[1] 0.001197648 0.699424186
+[1] 0.001194588 0.699644128
+[1] 0.0011927 0.6997801
+[1] 0.001191534 0.699864069
+[1] 0.001190814 0.699915990
+[1] 0.00119025 0.69995669
+[1] 0.00119025 0.69995669
+$minimum
+[1] 0.6999567
 
+$objective
+[1] 0.00119025
+\end{Soutput}
+\end{Schunk}
+
+Tout comme pour le lissage exponentiel effectué à la question précédente, la valeur $\alpha=0.7$ produit une erreur quadratique moyenne inférieure.
 \subsection{Bank of America}
 
 (détail à venir)
