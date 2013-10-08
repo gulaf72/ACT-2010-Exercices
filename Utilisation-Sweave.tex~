@@ -1,0 +1,27 @@
+\documentclass[11pt,english,francais]{article}
+\usepackage{scrtime}
+\usepackage{natbib} 
+\usepackage{tikz} 
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath} 
+\usepackage{amsfonts} 
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[hypcap]{caption}
+\usepackage[off]{auto-pst-pdf}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\DeclareMathOperator{\sgn}{sgn}
+
+\begin{document}
+
+
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -300,10 +300,103 @@ optimize(funOptAlphaDEMA,c(0.4,0.7),A)
 @ 
 
 Tout comme pour le lissage exponentiel effectué à la question précédente, la valeur $\alpha=0.7$ produit une erreur quadratique moyenne inférieure.
-\subsection{Bank of America}
 
-(détail à venir)
+\subsection{Bank of America (calculatrice et informatique)}
 
+On importe d'abord l'ensemble de données
+<<>>=
+BoA <- ts(read.csv("BoA.csv",header=TRUE,sep="\t"))
+@ 
+
+\begin{enumerate}
+\item 
+  On trace ensuite le corrélogramme (figure \ref{fig:exercice1.6-graph1})
+  La fonction \emph{acf} nous permet d'afficher un corrélogramme
+<<echo=FALSE>>=
+pdf("exercice1-6-graph1.pdf",paper="special", width=6,height=6)
+acf(BoA[,2],lag.max=19)
+dummy <- dev.off()
+@ 
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=4in, width=4in]{exercice1-6-graph1}
+  \caption{Corrélogramme de la série BoA}
+  \label{fig:exercice1.6-graph1}
+\end{figure}
+
+La fonction d'autocorrélation empirique $\hat{\rho}$ prend les valeurs suivantes
+<<>>=
+(BoA.acf <- acf(BoA[,2],lag.max=19))
+dummy <- dev.off()
+@ 
+
+En utilisant la méthode vue dans le cours, on construit un intervalle de confiance au niveau $1-\alpha=0.9$ à partir de la distribution normale. La valeur de $n$ est \Sexpr{length(BoA[,2])}.
+
+<<>>=
+(BoA.acf.IC <- round(c(1/sqrt(20)*qnorm(0.05),-1/sqrt(20)*qnorm(0.05)),4))
+@ 
+
+\begin{align*}
+  IC &= \frac{1}{\sqrt{n}}\left[-z_{\alpha / 2},z_{\alpha / 2} \right] \\
+  &= \frac{1}{\sqrt{20}}\left[-z_{0.05},z_{0.05} \right] \\
+  &= \left[ \Sexpr{BoA.acf.IC[1]},\Sexpr{BoA.acf.IC[2]} \right]
+\end{align*}
+
+<<>>=
+sum(BoA.acf$acf<BoA.acf.IC[1]) + sum(BoA.acf$acf>BoA.acf.IC[2])
+@ 
+Comme 3 valeurs sur 20, soit 15\% de celles-ci, sont à l'extérieur de l'intervalle de confiance, alors on doit rejeter l'hypothèse selon laquelle la série est stationnaire lorsqu'on se base sur le test du corrélogramme.
+\item
+  Ici, on n'a qu'à tracer la série et compter les changements de direction (figure \ref{fig:exercice1.6-graph2})
+<<echo=FALSE>>=
+pdf("exercice1-6-graph2.pdf",paper="special", width=6,height=6)
+plot(BoA[,2])
+dummy <- dev.off()
+@ 
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=4in, width=4in]{exercice1-6-graph2}
+  \caption{Corrélogramme de la série BoA}
+  \label{fig:exercice1.6-graph2}
+\end{figure}
+
+On en dénombre 9.
+
+<<>>=
+BoA.chdir <- abs((9-(2/3)*18)/sqrt((16*20-29)/90))
+BoA.chdir > qnorm(0.95)
+@ 
+On évalue la statistique de test, qui prend la valeur \Sexpr{round(BoA.chdir,4)}. Comme cette valeur est supérieure au seuil de \Sexpr{round(qnorm(0.95),4)}, on rejette l'hypothèse de stationnarité avec le test du changement de direction.
+\item
+<<>>=
+Box.test(BoA[,2],lag=19,type="Ljung-Box")
+qchisq(0.9,19)
+@ 
+
+On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=52.1457$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
+  
+\item
+  Les tests sont indépendants, différents entre eux et ne sont pas équivalents car leurs statistiques ne suivent pas la même distribution asymptotique.
+  
+\item
+<<>>=
+round(diff(log(BoA[,2])),4)
+@ 
+
+\item
+<<>>=
+(BoA.hist.var <- na.trim(apply(cbind(BoA[,2],lag(BoA[,2],1),lag(BoA[,2],2),lag(BoA[,2],3),lag(BoA[,2],4)),
+      1,
+      var)))
+Box.test(BoA.hist.var,lag=15,type="Ljung-Box")
+qchisq(0.9,15)
+@ 
+
+On remarque que la série des volatilités historiques avec $q=2$ est stationnaire bien que la volatilité ne soit pas constante.
+  
+\end{enumerate}
+
+\clearpage
 \subsection{Variance d'une série non-stationnaire}
 
 La variance du $t^e$ terme est équivalente à la somme de la variance des $t$ premiers termes d'erreurs. La différence entre les variances des $5^e$ terme et du $7^e$ terme est donc égale à la somme:

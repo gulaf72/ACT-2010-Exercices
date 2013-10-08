@@ -8,6 +8,8 @@
      "fig:exercice1-graph3"
      "fig:exercice1-graph4"
      "eq:1"
+     "fig:exercice1.6-graph1"
+     "fig:exercice1.6-graph2"
      "eq:2")
     (TeX-run-style-hooks
      "tabularx"

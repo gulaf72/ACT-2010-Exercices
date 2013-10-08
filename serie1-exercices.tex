@@ -89,24 +89,25 @@ sont manquantes. Identifiez ces données.\\
 Nous sommes le 28 juin 2013, à l'heure de la fermeture des marchés
 financiers. Vous possédez un titre de la compagnie BlackBerry dont la
 valeur est de $S_0 = 10.46$. Un analyste vous suggère d'acheter une
-option de vente européenne d'échéance de 84 jours ($t=84/365$) avec un prix d'exercice
-équivalant à la valeur d'un contrat à terme de même échéance afin de
-couvrir le risque de baisse de la valeur de ce titre. On considère des
-rendements sur une période de 28 jours et un taux sans risque composé
-continument de $r=1.75\%$.  En utilisant les logarithmes des valeurs
-historique à la fermeture du titre disponibles dans le fichier
-\url{blackberry.csv}, ainsi que la méthode de différenciation,
-évaluez les rendements mensuels du titre, qui correspondent aux
-résidus de ce processus différentié. Ensuite, en évaluant la moyenne
-et l'écart-type de cette composante, il est possible d'estimer la
-tendance linéaire $\mu$ et la volatilité $\sigma$ mensuelles de la
-série des rendements. En supposant que le prix peut prendre deux
-valeurs après 3 mois, soit $S_0u = S_0 e^{3(\mu+\sigma/(2\sqrt{3}))}$
-et $S_0d = S_0 e^{3(\mu-\sigma/(2\sqrt{3}))}$, évaluez le prix de
-l'option de vente en utilisant la probabilité neutre au risque d'une
-hausse $p^{*} = \frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous
-effectuerez en exercant l'option de vente le 20 septembre 2013,
-considérant que vous empruntez au taux $r+2\%$ pour acheter l'option.
+option de vente européenne d'échéance de 84 jours ($t=84/365$) avec un
+prix d'exercice équivalant à la valeur nominale d'un contrat à terme
+de même échéance afin de couvrir le risque de baisse de la valeur de
+ce titre. On considère des rendements sur une période de 28 jours et
+un taux sans risque composé continument de $r=1.75\%$.  En utilisant
+les logarithmes des valeurs historique à la fermeture du titre
+disponibles dans le fichier \url{blackberry.csv}, ainsi que la méthode
+de différenciation, évaluez les rendements mensuels du titre, qui
+correspondent aux résidus de ce processus différentié. Ensuite, en
+évaluant la moyenne et l'écart-type de cette composante, il est
+possible d'estimer la tendance linéaire $\mu$ et la volatilité
+$\sigma$ mensuelles de la série des rendements. En supposant que le
+prix peut prendre deux valeurs à l'échéance, soit $S_0u = S_0
+e^{3(\mu+\sigma/(2\sqrt{3}))}$ et $S_0d = S_0
+e^{3(\mu-\sigma/(2\sqrt{3}))}$, évaluez le prix de l'option de vente
+en utilisant la probabilité neutre au risque d'une hausse $p^{*} =
+\frac{e^{rt}-d}{u-d}$ et évaluez le profit que vous effectuerez en
+exercant l'option de vente le 20 septembre 2013, considérant que vous
+empruntez au taux $r+2\%$ pour acheter l'option.
 
 \subsection{Lissage exponentiel I (Calculatrice)}
 
@@ -124,14 +125,14 @@ erreur quadratique moyenne (MSE).
 En utilisant les données du problème précédent, déterminez, à l'aide
 d'un algorithme informatique, la valeur de $\alpha$ comprise entre $0.4$ et $0.7$ qui minimise l'erreur quadratique moyenne (MSE) pour un lissage exponentiel double.
 
-\subsection{Bank of America (calculatrice)}
+\subsection{Bank of America (calculatrice et informatique)}
 
 On considère les 20 observations de la valeur ajustée à la fermeture (valeur qui tient compte des dividendes) du titre de la Bank of America pour chaque lundi entre le 20 mai 2013 et le 30 septembre 2013. Ces données se trouvent dans le fichier \url{BoA.csv}.
 
 \begin{enumerate}
-\item En utilisant le test du corrélogramme avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
+\item En utilisant le test du corrélogramme avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire (Bruit blanc).
 
-\item En utilisant le test du changement de direction, déterminez s'il s'agit d'une série stationnaire.
+\item En utilisant le test du changement de direction avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
 
 \item En utilisant le test de Portmanteau avec un seuil de tolérance de $\alpha = 10\%$, déterminez s'il s'agit d'une série stationnaire.
 
