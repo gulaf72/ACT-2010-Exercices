@@ -1,9 +1,10 @@
-(TeX-add-style-hook "serie1-exercices"
+(TeX-add-style-hook "serie2-exercices"
  (lambda ()
     (LaTeX-add-labels
-     "sec:serie-dexercices-1"
-     "sec:exercice-1-1"
-     "sec:variance-dune-serie")
+     "sec:zone-de-stat"
+     "sec:ordre-dintegration"
+     "sec:invers-de-proc"
+     "sec:constr-dune-serie")
     (TeX-run-style-hooks
      "tabularx"
      "ccicons"

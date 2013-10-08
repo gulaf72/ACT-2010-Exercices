@@ -1,0 +1,88 @@
+\documentclass[11pt,english,francais]{article}
+\usepackage{scrtime}
+\usepackage{natbib} 
+\usepackage{tikz} 
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath} 
+\usepackage{amsfonts} 
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[hypcap]{caption}
+\usepackage[off]{auto-pst-pdf}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\DeclareMathOperator{\sgn}{sgn}
+
+\begin{document}
+\addtocounter{section}{1}
+
+\section{Modèles classiques pour séries chronologiques}
+
+\subsection{Zone de stationnarité pour AR(2) (Théorique)}
+\label{sec:zone-de-stat}
+
+
+Pour avoir la stationnarité, il faut que les racines du polynôme caractéristique soient inférieures à 1 en valeur absolue. Démontrez que pour le modèle AR(2), la stationnarité est possible si et seulement si les trois conditions suivantes sont réunies:
+\begin{align*}
+  \phi_1 + \phi_2 &< 1 \\
+  \phi_2 - \phi_1 &< 1 \\
+  |\phi_2| &< 1
+\end{align*}
+
+\subsection{Ordre d'intégration (Théorique)}
+\label{sec:ordre-dintegration}
+
+\begin{enumerate}
+\item 
+Un polynôme d'ordre $k$ en t est intégré d'ordre $k$ puisque
+\begin{align*}
+  (1-B)^k(a_0+a_1t+a_2t^2+\ldots+a_kt^k) &= k!a_k 
+\end{align*}
+
+Démontrez cette affirmation.
+\item 
+
+Démontrez que si $x_t$ est stationnaire, alors $(1-B)x_t$ est aussi stationnaire.
+\end{enumerate}
+
+\subsection{Inversion de processus d'ordre 1 (Théorique)}
+\label{sec:invers-de-proc}
+
+\begin{enumerate}
+\item 
+Démontrez algébriquement qu'un processus AR(1) est équivalent à un processus MA($\infty$).
+
+\item 
+Démontrez algébriquement qu'un processus MA(1) est équivalent à un processus AR($\infty$).
+\end{enumerate}
+
+\subsection{Construction d'une série autorégressive (Calculatrice)}
+\label{sec:constr-dune-serie}
+
+On considère les 10 nombres aléatoires suivants, issus d'une distribution normale centrée réduite:
+
+\begin{verbatim}
+ [1] -1.21  0.28  1.08 -2.35  0.43  0.51 -0.57 -0.55 -0.56 -0.89
+\end{verbatim}
+
+Construisez la série autorégressive d'ordre 1 avec coefficient: 
+\begin{enumerate}
+\item $\gamma = -0.5$
+\item $\gamma = 0.5$
+\end{enumerate}
+
+Quelle différence observez-vous entre la série avec une corrélation négative et la série avec une corrélation positive ?
+
+\clearpage
+
+\input{cc}
+
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
