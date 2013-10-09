@@ -31,5 +31,6 @@
      "francais"
      "english"
      "11pt"
+     "pagetitre"
      "cc")))
 

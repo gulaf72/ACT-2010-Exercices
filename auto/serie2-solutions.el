@@ -1,16 +1,5 @@
-(TeX-add-style-hook "serie1-solutions"
+(TeX-add-style-hook "serie2-solutions"
  (lambda ()
-    (LaTeX-add-labels
-     "sec:serie-dexercices-1"
-     "sec:exercice-1-1"
-     "fig:exercice1-graph1"
-     "fig:exercice1-graph2"
-     "fig:exercice1-graph3"
-     "fig:exercice1-graph4"
-     "eq:1"
-     "fig:exercice1.6-graph1"
-     "fig:exercice1.6-graph2"
-     "eq:2")
     (TeX-run-style-hooks
      "tabularx"
      "ccicons"

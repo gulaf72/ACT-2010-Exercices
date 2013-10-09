@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  7 OCT 2013 22:22
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.7.6)  8 OCT 2013 22:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\input serie1-solutions.Rnw.tex
+**\input serie2-solutions.Rnw.tex
 
 ! Emergency stop.
-<*> \input serie1-solutions.Rnw.tex
+<*> \input serie2-solutions.Rnw.tex
                                    
 *** (job aborted, file error in nonstop mode)
 

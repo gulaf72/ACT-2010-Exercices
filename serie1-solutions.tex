@@ -15,6 +15,8 @@
 \begin{document}
 \input{serie1-solutions-concordance}
 
+\input{pagetitre}
+
 \section{Méthodes de lissage et saisonnalité}
 \label{sec:serie-dexercices-1}
 
@@ -37,7 +39,7 @@
 > xtable(Yt.ts,digits=1) ## Générer une table LaTeX
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -66,7 +68,7 @@
 > xtable(Zt.ts <- diff(Yt.ts,12),digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -95,7 +97,7 @@
 > xtable(Yt.ts-Zt.ts,digits=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -128,7 +130,7 @@ données précédentes et que nous voulons une moyenne mobile centrée, nous dev
 > xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2) ## Simple Moving Average(q=1)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -150,7 +152,7 @@ Moyenne mobile avec $q=5$
 > xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2) ## Simple Moving Average(q=5)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -172,7 +174,7 @@ Lissage exponentiel double avec $\alpha=0.75$
 > xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2) ## Double Exponential 
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -214,7 +216,7 @@ Coefficients:
 > xtable(mt4 <- ts(coeff1[1]+t*coeff1[2],start=c(2009,7),deltat=1/12),digits=2)
 \end{Sinput}
 % latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Mon Oct  7 22:26:51 2013
+% Tue Oct  8 20:52:06 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -527,7 +529,8 @@ On importe d'abord l'ensemble de données
   \label{fig:exercice1.6-graph1}
 \end{figure}
 
-La fonction d'autocorrélation empirique $\hat{\rho}$ prend les valeurs suivantes
+La fonction d'autocorrélation empirique $\hat{\rho}$ prend les valeurs 
+suivantes:
 \begin{Schunk}
 \begin{Sinput}
 > (BoA.acf <- acf(BoA[,2],lag.max=19))
@@ -545,7 +548,9 @@ Autocorrelations of series ‘BoA[, 2]’, by lag
 \end{Sinput}
 \end{Schunk}
 
-En utilisant la méthode vue dans le cours, on construit un intervalle de confiance au niveau $1-\alpha=0.9$ à partir de la distribution normale. La valeur de $n$ est 20.
+En utilisant la méthode vue dans le cours, on construit un intervalle de 
+confiance au niveau $1-\alpha=0.9$ à partir de la distribution normale. La 
+valeur de $n$ est 20.
 
 \begin{Schunk}
 \begin{Sinput}
@@ -570,9 +575,12 @@ En utilisant la méthode vue dans le cours, on construit un intervalle de confia
 [1] 3
 \end{Soutput}
 \end{Schunk}
-Comme 3 valeurs sur 20, soit 15\% de celles-ci, sont à l'extérieur de l'intervalle de confiance, alors on doit rejeter l'hypothèse selon laquelle la série est stationnaire lorsqu'on se base sur le test du corrélogramme.
+Comme 3 valeurs sur 20, soit 15\% de celles-ci, sont à l'extérieur de 
+l'intervalle de confiance, alors on doit rejeter l'hypothèse selon laquelle la 
+série est stationnaire lorsqu'on se base sur le test du corrélogramme.
 \item
-  Ici, on n'a qu'à tracer la série et compter les changements de direction (figure \ref{fig:exercice1.6-graph2})
+  Ici, on n'a qu'à tracer la série et compter les changements de direction 
+  (figure \ref{fig:exercice1.6-graph2})
 \begin{figure}[p]
   \centering
   \includegraphics[height=4in, width=4in]{exercice1-6-graph2}
@@ -614,7 +622,8 @@ X-squared = 52.1457, df = 19, p-value = 6.292e-05
 On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=52.1457$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
   
 \item
-  Les tests sont indépendants, différents entre eux et ne sont pas équivalents car leurs statistiques ne suivent pas la même distribution asymptotique.
+  Les tests sont indépendants, différents entre eux et ne sont pas équivalents 
+  car leurs statistiques ne suivent pas la même distribution asymptotique.
   
 \item
 \begin{Schunk}
@@ -635,9 +644,13 @@ Frequency = 1
 \item
 \begin{Schunk}
 \begin{Sinput}
-> (BoA.hist.var <- na.trim(apply(cbind(BoA[,2],lag(BoA[,2],1),lag(BoA[,2],2),lag(BoA[,2],3),lag(BoA[,2],4)),
-+       1,
-+       var)))
+> (BoA.hist.var <- na.trim(apply(cbind(BoA[,2],
++                                      lag(BoA[,2],1),
++                                      lag(BoA[,2],2),
++                                      lag(BoA[,2],3),
++                                      lag(BoA[,2],4)),
++                                1,
++                                var)))
 \end{Sinput}
 \begin{Soutput}
  [1] 0.08642 0.06185 0.03017 0.02963 0.02753 0.06795 0.03257 0.03617 0.18785
@@ -674,41 +687,7 @@ La variance du $t^e$ terme est équivalente à la somme de la variance des $t$ p
   & = 8.5
 \end{align*}
 
-
 \clearpage
 
-\includegraphics[height=7mm,keepaspectratio=true]{by-sa}\\
-Cette création est mise à disposition selon le contrat
-\href{http://creativecommons.org/licenses/by-sa/2.5/ca/deed.fr}{%
-  Paternité-Partage à l'identique 2.5 Canada} de Creative Commons
-disponible à l'adresse \\
-http://creativecommons.org/licenses/by-sa/2.5/ca/deed.fr \\
-
-En vertu de ce contrat, vous êtes libre de:
-
-\begin{itemize}
-\item \textbf{partager} --- reproduire, distribuer et communiquer
-  l'{\oe}uvre;
-\item \textbf{remixer} --- adapter l'{\oe}uvre;
-\item utiliser cette {\oe}uvre à des fins commerciales.
-\end{itemize}
-
-Selon les conditions suivantes:\\
-
-  \begin{tabularx}{\linewidth}{@{}lX@{}}
-    \raisebox{-9mm}[0mm][13mm]{%
-      \includegraphics[height=11mm,keepaspectratio=true]{by}} &
-    \textbf{Attribution} --- Vous devez attribuer l'{\oe}uvre de la
-    manière indiquée par l'auteur de l'{\oe}uvre ou le titulaire des
-    droits (mais pas d'une manière qui suggérerait qu'ils vous
-    soutiennent ou
-    approuvent votre utilisation de l'{\oe}uvre). \\
-    \raisebox{-9mm}{\includegraphics[height=11mm,keepaspectratio=true]{sa}}
-    & \textbf{Partage à l'identique} --- Si vous modifiez, transformez
-    ou adaptez cette {\oe}uvre, vous n'avez le droit de distribuer
-    votre création que sous une licence identique ou similaire à
-    celle-ci.
-  \end{tabularx}
-\clearpage
-Document généré le \today \ à \ \thistime 
+\input{cc}
 \end{document}

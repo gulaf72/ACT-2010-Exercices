@@ -1,0 +1,88 @@
+\documentclass{article} 
+\usepackage{graphicx}
+\usepackage[francais]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{verbatim} 
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{scrtime}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\input{pagetitre}
+
+\section{Modèles classiques pour séries chronologiques}
+
+\subsection{Zone de stationnarité pour AR(2) (Théorique)}
+
+On obtient les racines de l'équation caractéristique en utilisant la formule quadratique habituelle
+
+\begin{align*}
+  \frac{\phi_1\pm\sqrt{\phi_1^2+4\phi_2}}{-2\phi_2}
+\end{align*}
+
+On considère les inverses des deux racines, $A_1$ et $A_2$.
+
+\begin{align*}
+  A_1 &= \frac{2\phi_2}{-\phi_1-\sqrt{\phi_1^2+4\phi_2}} \\
+  &= \frac{2\phi_2}{-\phi_1-\sqrt{\phi_1^2+4\phi_2}} \left[\frac{-\phi_1+\sqrt{\phi_1^2+4\phi_2}}{-\phi_1+\sqrt{\phi_1^2+4\phi_2}} \right] \\
+  &= \frac{2\phi_2(-\phi_1+\sqrt{\phi_1^2+4\phi_2})}{\phi_1^2-(\phi_1^2+4\phi_2)}\\
+  &= \frac{\phi_1-\sqrt{\phi_1^2+4\phi_2}}{2}\\
+  A_2 &= \frac{\phi_1+\sqrt{\phi_1^2+4\phi_2}}{2}
+\end{align*}
+
+Il y a 2 situations possibles: soit les racines sont réelles ($\phi_1^2+4\phi_2>0$) ou elles sont complexes ($\phi_1^2+4\phi_2<0$).
+\begin{itemize}
+\item \textbf{Racines réelles:}
+  Comme les racines doivent être plus grandes que 1, alors nécessairement leurs inverses $|A_1|<1$ et $|A_2|<1$. Nous avons donc:
+  \begin{align*}
+    -1 &< \frac{\phi_1-\sqrt{\phi_1^2+4\phi_2}}{2} <  \frac{\phi_1+\sqrt{\phi_1^2+4\phi_2}}{2} < 1 \\
+    \Leftrightarrow -2 &< \phi_1-\sqrt{\phi_1^2+4\phi_2} < \phi_1+\sqrt{\phi_1^2+4\phi_2} < 2
+  \end{align*}
+  En observant la première inégalité, on a:
+  \begin{align*}
+    -2 < \phi_1-\sqrt{\phi_1^2+4\phi_2}
+    &\Leftrightarrow \sqrt{\phi_1^2+4\phi_2}<\phi_1+2 \\
+    &\Leftrightarrow \phi_1^2+4\phi_2 < \phi_1^2+4\phi_1+4 \\
+    &\Leftrightarrow \phi_2 < \phi_1 + 1 \\
+    &\Leftrightarrow \phi_2 - \phi_1 < 1
+  \end{align*}
+  Ce qui correspond à la seconde condition. En considérant la seconde inégalité, on obtient, de la même façon, la première inégalité:
+  \begin{align*}
+    \phi_1+\sqrt{\phi_1^2+4\phi_2} &< 2 \\
+    &\Leftrightarrow \phi_1 + \phi_2 < 1
+  \end{align*}
+  Ces deux conditions réunies avec un discriminant positif forment la région de stationnarité pour des racines réelles.
+  
+\item \textbf{Racines complexes:}  
+  On considère la situation où $\phi_1^2+4\phi_2<0$. Ici, on aura des conjugués complexes et $|A_1| = |A_2| <1$ seulement si $|A_1|^2<1$.
+  \begin{align*}
+    |A_1|^2 &=\frac{\phi_1^2+(-\phi_1^2-4\phi_2}{4}=-\phi^2 \\
+    &\Leftrightarrow \phi_2>-1 \\
+    &\Leftrightarrow |\phi_2|<1
+  \end{align*}
+  Ce résultat réuni avec un discriminant négatif forment la région de stationnarité pour des racines complexes.
+\end{itemize}
+
+\clearpage
+\subsection{Ordre d'intégration (Théorique)}
+
+
+
+
+\clearpage
+\subsection{Inversion de processus d'ordre 1 (Théorique)}
+
+
+\clearpage
+\subsection{Construction d'une série autorégressive (Calculatrice)}
+
+
+\clearpage
+
+\input{cc}
+\end{document}

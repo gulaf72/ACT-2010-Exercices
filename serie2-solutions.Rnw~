@@ -1,0 +1,25 @@
+\documentclass{article} 
+\usepackage{graphicx}
+\usepackage[francais]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{verbatim} 
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{scrtime}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\clearpage
+
+\input{cc}
+
+\clearpage
+
+Document généré le \today \ à \ \thistime 
+
+\end{document}
