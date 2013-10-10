@@ -71,16 +71,72 @@ Il y a 2 situations possibles: soit les racines sont réelles ($\phi_1^2+4\phi_2
 \clearpage
 \subsection{Ordre d'intégration (Théorique)}
 
+\begin{enumerate}
+  
+\item On obtient ce résultat par récurrence. Par exemple, pour $k=2$, on a :
+
+\begin{align*}
+  (1-B)^2 (a_0+a_1t+a_2t^2) &= (1-B) ((a_0+a_1t+a_2t^2)\\ &\quad- (a_0+a_1(t-1)+a_2(t-1)^2)) \\
+  &= (1-B) (a_1+a_2(2t+1)) \\
+  &= (a_1+a_2(2t+1)) - (a_1+a_2(2(t-1)+1)) \\
+  &= 2a_2
+\end{align*}
+
+En général, on obtient:
+
+\begin{align*}
+  (1-B)^k (a_0+a_1t+a_2t^2+\ldots+a_kt^k) &= (1-B)^{k-1} ((a_0+a_1t+a_2t^2+\ldots+a_kt^k)\\ &\quad- (a_0+a_1(t-1)+a_2(t-1)^2+\ldots+a_k(t-1)^k)) \\
+  &= (1-B)^{k-1} (a_1 + 2a_2t+\ldots+a_k(t^k-(t-1)^k))
+\end{align*}
+
+On remarque qu'à chaque itération, le premier terme de la série disparait. Ainsi, après $k$ itérations, il ne restera que le terme en $a_k$ avec son coefficient, qui correspont à $k!$. On obtient ainsi la solution générale.
+
+\item Une série est dite stationnaire lorsque chaque terme est un terme d'erreur dont la distribution est constante au fil du temps. Ainsi, la distribution de la différence de deux termes consécutifs de la série sera aussi constante au fil du temps. Par exemple:
+  \begin{align*}
+    \epsilon_t \sim N(0,\sigma^2)  \\
+     \epsilon_t - \epsilon_{t-1} \sim N(0,2\sigma^2) \\
+  \end{align*}
+
+\end{enumerate}
 
 
 
 \clearpage
 \subsection{Inversion de processus d'ordre 1 (Théorique)}
 
+\begin{enumerate}
+\item Un processus AR(1) est défini par $y_t = \gamma_1y_{t-1} + \epsilon_t$. En développant le terme $y_{t-1}$, on obtient $y_t = \gamma_1^2y_{t-2}+\gamma_1\epsilon_{t-1}+\epsilon_t$. De manière récursive, on obtient $y_t = \gamma_1^{t}\epsilon_0 + \gamma_1^{t-1}\epsilon_1 + \ldots + \gamma_1\epsilon_{t-1} + \epsilon_t$. ainsi, en faisant tendre $t\to\infty$, on obtient une représentation MA($\infty$).
+  
+\item Un processus MA(1) est défini par $y_t = \epsilon_t - \theta_1\epsilon_{t-1}$. On cherche à substituer le terme $\epsilon_{t-1}$. On développe le terme précédent de la série: $y_{t-1} = \epsilon_{t-1} - \theta_1\epsilon_{t-2}$ et on substitue dans la première expression pour obtenir $y_t = \epsilon_t - \theta_1y_{t-1} - \theta_1^2\epsilon_{t-2}$. De manière récursive, on obtient $y_t = -\theta_1^ty_0-\theta_1^{t-1}y_1-\ldots-\theta_1y_{t-1}+\epsilon_{t}$. Lorsque $t\to\infty$, on obtient une représentation AR($\infty$).
+\end{enumerate}
+
 
 \clearpage
 \subsection{Construction d'une série autorégressive (Calculatrice)}
 
+On utilise la formule $y_t = \gamma_1y_{t-1} + \epsilon_t$.
+
+\begin{center}
+\begin{tabular}{|r|r|r|}
+\hline
+\multicolumn{1}{|l|}{} & \multicolumn{ 2}{c|}{$\gamma$} \\ \hline
+\multicolumn{1}{|l|}{$N(0,1)$} & -0,5 & 0,5 \\ \hline
+-1,21 & -1,2100 & -1,2100 \\ \hline
+0,28 & 0,8850 & -0,3250 \\ \hline
+1,08 & 0,6375 & 0,9175 \\ \hline
+-2,35 & -2,6688 & -1,8913 \\ \hline
+0,43 & 1,7644 & -0,5156 \\ \hline
+0,51 & -0,3722 & 0,2522 \\ \hline
+-0,57 & -0,3839 & -0,4439 \\ \hline
+-0,55 & -0,3580 & -0,7720 \\ \hline
+-0,56 & -0,3810 & -0,9460 \\ \hline
+-0,89 & -0,6995 & -1,3630 \\ \hline
+\end{tabular}
+\end{center}
+
+Les séries avec une corrélation négative ont tendance à aller dans la direction contraire des termes précédents alors que celles avec une corrélation positive ont tendance à aller dans la même direction que les termes précédents.
+
+Le tableur \url{constructionserieAR.ods} contient les calculs effectués.
 
 \clearpage
 
