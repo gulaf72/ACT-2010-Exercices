@@ -39,7 +39,7 @@
 > xtable(Yt.ts,digits=1) ## Générer une table LaTeX
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:49 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -68,7 +68,7 @@
 > xtable(Zt.ts <- diff(Yt.ts,12),digits=1)
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:49 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -97,7 +97,7 @@
 > xtable(Yt.ts-Zt.ts,digits=1)
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:49 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -130,7 +130,7 @@ données précédentes et que nous voulons une moyenne mobile centrée, nous dev
 > xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2) ## Simple Moving Average(q=1)
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:49 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -152,7 +152,7 @@ Moyenne mobile avec $q=5$
 > xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2) ## Simple Moving Average(q=5)
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:49 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -174,7 +174,7 @@ Lissage exponentiel double avec $\alpha=0.75$
 > xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2) ## Double Exponential 
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:50 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -216,7 +216,7 @@ Coefficients:
 > xtable(mt4 <- ts(coeff1[1]+t*coeff1[2],start=c(2009,7),deltat=1/12),digits=2)
 \end{Sinput}
 % latex table generated in R 3.0.1 by xtable 1.7-1 package
-% Sun Oct 20 20:26:50 2013
+% Sun Oct 20 20:42:29 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -569,14 +569,15 @@ valeur de $n$ est 20.
 
 \begin{Schunk}
 \begin{Sinput}
-> sum(BoA.acf$acf<BoA.acf.IC[1]) + sum(BoA.acf$acf>BoA.acf.IC[2])
+> (BoA.nbacfplus <- sum(BoA.acf$acf[-1]<BoA.acf.IC[1]) + 
++  sum(BoA.acf$acf[-1]>BoA.acf.IC[2]))
 \end{Sinput}
 \begin{Soutput}
-[1] 3
+[1] 2
 \end{Soutput}
 \end{Schunk}
-Comme 3 valeurs sur 20, soit 15\% de celles-ci, sont à l'extérieur de 
-l'intervalle de confiance, alors on doit rejeter l'hypothèse selon laquelle la 
+Comme 2 valeurs sur 20, soit 10\% de celles-ci, sont à l'extérieur de 
+l'intervalle de confiance, alors on ne peut rejeter l'hypothèse selon laquelle la 
 série est stationnaire lorsqu'on se base sur le test du corrélogramme.
 \item
   Ici, on n'a qu'à tracer la série et compter les changements de direction 

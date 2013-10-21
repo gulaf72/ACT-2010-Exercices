@@ -348,10 +348,11 @@ valeur de $n$ est \Sexpr{length(BoA[,2])}.
 \end{align*}
 
 <<>>=
-sum(BoA.acf$acf<BoA.acf.IC[1]) + sum(BoA.acf$acf>BoA.acf.IC[2])
+(BoA.nbacfplus <- sum(BoA.acf$acf[-1]<BoA.acf.IC[1]) + 
+ sum(BoA.acf$acf[-1]>BoA.acf.IC[2]))
 @ 
-Comme 3 valeurs sur 20, soit 15\% de celles-ci, sont à l'extérieur de 
-l'intervalle de confiance, alors on doit rejeter l'hypothèse selon laquelle la 
+Comme \Sexpr{BoA.nbacfplus} valeurs sur 20, soit 10\% de celles-ci, sont à l'extérieur de 
+l'intervalle de confiance, alors on ne peut rejeter l'hypothèse selon laquelle la 
 série est stationnaire lorsqu'on se base sur le test du corrélogramme.
 \item
   Ici, on n'a qu'à tracer la série et compter les changements de direction 
