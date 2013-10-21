@@ -376,12 +376,13 @@ BoA.chdir > qnorm(0.95)
 @ 
 On évalue la statistique de test, qui prend la valeur \Sexpr{round(BoA.chdir,4)}. Comme cette valeur est supérieure au seuil de \Sexpr{round(qnorm(0.95),4)}, on rejette l'hypothèse de stationnarité avec le test du changement de direction.
 \item
+  Il existe deux tests de type «portmanteau». Celui que vous avez vu en classe est le test de Box-Pierce où h commence à 1.
 <<>>=
-Box.test(BoA[,2],lag=19,type="Ljung-Box")
+Box.test(BoA[,2],lag=19,type="Box-Pierce")
 qchisq(0.9,19)
 @ 
 
-On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=52.1457$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
+On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=33.5182$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
   
 \item
   Les tests sont indépendants, différents entre eux et ne sont pas équivalents 
@@ -401,7 +402,7 @@ round(diff(log(BoA[,2])),4)
                                      lag(BoA[,2],4)),
                                1,
                                var)))
-Box.test(BoA.hist.var,lag=15,type="Ljung-Box")
+Box.test(BoA.hist.var,lag=15,type="Box-Pierce")
 qchisq(0.9,15)
 @ 
 

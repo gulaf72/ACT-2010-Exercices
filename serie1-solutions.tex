@@ -38,8 +38,8 @@
 \begin{Sinput}
 > xtable(Yt.ts,digits=1) ## Générer une table LaTeX
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -67,8 +67,8 @@
 \begin{Sinput}
 > xtable(Zt.ts <- diff(Yt.ts,12),digits=1)
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -96,8 +96,8 @@
 \begin{Sinput}
 > xtable(Yt.ts-Zt.ts,digits=1)
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -129,8 +129,8 @@ données précédentes et que nous voulons une moyenne mobile centrée, nous dev
 \begin{Sinput}
 > xtable(mt1 <- lag(SMA(Zt.ts,n=3),1),digits=2) ## Simple Moving Average(q=1)
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -151,8 +151,8 @@ Moyenne mobile avec $q=5$
 \begin{Sinput}
 > xtable(mt2 <- lag(SMA(Zt.ts,n=11),5),digits=2) ## Simple Moving Average(q=5)
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:49 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -173,8 +173,8 @@ Lissage exponentiel double avec $\alpha=0.75$
 \begin{Sinput}
 > xtable(mt3 <- DEMA(Zt.ts,n=1,ratio=.05),digits=2) ## Double Exponential 
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -215,8 +215,8 @@ Coefficients:
 \begin{Sinput}
 > xtable(mt4 <- ts(coeff1[1]+t*coeff1[2],start=c(2009,7),deltat=1/12),digits=2)
 \end{Sinput}
-% latex table generated in R 2.15.2 by xtable 1.7-1 package
-% Tue Oct  8 20:52:06 2013
+% latex table generated in R 3.0.1 by xtable 1.7-1 package
+% Sun Oct 20 20:26:50 2013
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
@@ -601,15 +601,16 @@ On en dénombre 9.
 \end{Schunk}
 On évalue la statistique de test, qui prend la valeur 1.6684. Comme cette valeur est supérieure au seuil de 1.6449, on rejette l'hypothèse de stationnarité avec le test du changement de direction.
 \item
+  Il existe deux tests de type «portmanteau». Celui que vous avez vu en classe est le test de Box-Pierce où h commence à 1.
 \begin{Schunk}
 \begin{Sinput}
-> Box.test(BoA[,2],lag=19,type="Ljung-Box")
+> Box.test(BoA[,2],lag=19,type="Box-Pierce")
 \end{Sinput}
 \begin{Soutput}
-	Box-Ljung test
+	Box-Pierce test
 
-data:  BoA[, 2] 
-X-squared = 52.1457, df = 19, p-value = 6.292e-05
+data:  BoA[, 2]
+X-squared = 33.5182, df = 19, p-value = 0.02093
 \end{Soutput}
 \begin{Sinput}
 > qchisq(0.9,19)
@@ -619,7 +620,7 @@ X-squared = 52.1457, df = 19, p-value = 6.292e-05
 \end{Soutput}
 \end{Schunk}
 
-On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=52.1457$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
+On rejette l'hypothèse de stationnarité car la valeur de $Q^{*}=33.5182$ est supérieure au quantile $\chi^2_{0.1}(19) = 27.20357$
   
 \item
   Les tests sont indépendants, différents entre eux et ne sont pas équivalents 
@@ -657,13 +658,13 @@ Frequency = 1
 [10] 0.61597 0.79813 0.71857 0.17257 0.06697 0.15075 0.12818
 \end{Soutput}
 \begin{Sinput}
-> Box.test(BoA.hist.var,lag=15,type="Ljung-Box")
+> Box.test(BoA.hist.var,lag=15,type="Box-Pierce")
 \end{Sinput}
 \begin{Soutput}
-	Box-Ljung test
+	Box-Pierce test
 
-data:  BoA.hist.var 
-X-squared = 19.9483, df = 15, p-value = 0.1739
+data:  BoA.hist.var
+X-squared = 13.7076, df = 15, p-value = 0.5478
 \end{Soutput}
 \begin{Sinput}
 > qchisq(0.9,15)
