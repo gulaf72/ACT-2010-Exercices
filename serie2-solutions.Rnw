@@ -14,7 +14,7 @@
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 \input{pagetitre}
-
+\addtocounter{section}{1}
 \section{Modèles classiques pour séries chronologiques}
 
 \subsection{Zone de stationnarité pour AR(2) (Théorique)}
@@ -138,7 +138,90 @@ Les séries avec une corrélation négative ont tendance à aller dans la direct
 
 Le tableur \url{constructionserieAR.ods} contient les calculs effectués.
 
-\clearpage
+\subsection{Deux processus MA(2) (Théorique)}
 
-\input{cc}
+Il suffit de calculer la fonction d'autorégression pour chaque processus MA(2).
+Ensuite, on peut évaluer la fonction d'autocorrélation et comparer le résultat obtenu.
+
+\begin{enumerate}
+\item Premier processus avec:
+  \begin{align*}
+    \theta_1 = \theta_2 = \frac{1}{4}
+  \end{align*}
+  Fonction d'autocovariance
+  \begin{align*}
+    \gamma_0^{(1)} &= V[Y_t] \\
+    &= V[e_t]+\frac{1}{16}V[e_{t-1}]+\frac{1}{16}V[e_{t-2}] \\
+    &= (1+\frac{1}{8})\theta^2_e \\
+    &= \frac{9}{8} \sigma^2_e \\
+  \end{align*}
+  \begin{align*}
+    \gamma_1^{(1)} &= Cov(Y_t,Y_{t-1}) \\
+    &= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-1} - \frac{1}{4}e_{t-2} - \frac{1}{4}e_{t-3} )\\
+    &= Cov(-\frac{1}{4}e_{t-1},e_{t-1}) + Cov(-\frac{1}{4}e_{t-2},-\frac{1}{4}e_{t-2}) \\
+    &= (-\frac{1}{4}+(-\frac{1}{4})(-\frac{1}{4})) \sigma^2_e \\
+    &= -\frac{3}{16} \sigma^2_e \\
+  \end{align*}
+  \begin{align*}
+    \gamma_2^{(1)} &= Cov(Y_t,Y_{t-2}) \\
+    &= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-2} - \frac{1}{4}e_{t-3} - \frac{1}{4}e_{t-4} )\\
+    &= Cov(-\frac{1}{4}e_{t-2},e_{t-2}) \\
+    &= -\frac{1}{4} \sigma^2_e \\
+  \end{align*}
+  \begin{align*}
+    \gamma_k^{(1)} &= 0, \qquad \forall k \geq 3
+   \end{align*}
+   Fonction d'autocorrélation
+   \begin{align*}
+     \rho_1^{(1)} &= \frac{\gamma_1^{(1)}}{\gamma_0^{(1)}} \\
+     &= \frac{\frac{-3}{16}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
+     &= \frac{-1}{6} \\
+   \end{align*}
+   \begin{align*}
+     \rho_2^{(1)} &= \frac{\gamma_2^{(1)}}{\gamma_0^{(1)}} \\
+     &= \frac{\frac{-1}{4}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
+     &= \frac{-2}{9} \\
+   \end{align*}
+ \item Second processus avec:
+   \begin{align*}
+     \theta_1 = -1 \quad \theta_2 = 4
+   \end{align*}
+   Fonction d'autocovariance
+   \begin{align*}
+     \gamma_0^{(2)} &= V[Y_t] \\
+     &= V[e_t]+V[e_{t-1}]+16V[e_{t-2}] \\
+     &= 18 \sigma^2_e
+   \end{align*}
+   \begin{align*}
+     \gamma_1^{(2)} &= Cov(Y_t,Y_{t-1}) \\
+     &= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-1} + e_{t-2} - 4e_{t-3}) \\
+     &= Cov(e_{t-1},e_{t-1}) + Cov(-4e_{t-2},e_{t-2}) \\
+     &= (1 + (-1)(4))\sigma^2_e \\
+     &= -3\sigma^2_e \\
+   \end{align*}
+   \begin{align*}
+     \gamma_2^{(2)} &= Cov(Y_t,Y_{t-2}) \\
+     &= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-2} + e_{t-3} - 4e_{t-4} )\\
+     &= Cov(- 4e_{t-2},e_{t-2}) \\
+     &= -4\sigma^2_e \\
+   \end{align*}
+   Fonction d'autocorrélation
+   \begin{align*}
+     \rho_1^{(2)} &= \frac{\gamma_1^{(2)}}{\gamma_0^{(2)}} \\
+     &= \frac{-3\sigma^2_e}{18\sigma^2_e} \\
+     &= \frac{-1}{6} \\
+   \end{align*}
+   \begin{align*}
+     \rho_2^{(2)} &= \frac{\gamma_2^{(2)}}{\gamma_0^{(2)}} \\
+     &= \frac{-4\sigma^2_e}{18\sigma^2_e} \\
+     &= \frac{-2}{9} \\
+   \end{align*}
+ \end{enumerate}
+ 
+ On remarque clairement que $\rho_1^{(1)} = \rho_1^{(2)}$ et $\rho_2^{(1)} = \rho_2^{(2)}$. 
+ La fonction d'autocovariance vaut toujours 1 pour $\rho_1$ et vaut 0 ailleurs.
+ 
+ \clearpage
+ 
+ \input{cc}
 \end{document}
