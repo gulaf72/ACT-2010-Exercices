@@ -255,9 +255,60 @@ $\hat{\phi_1} = \Sexpr{round(phi1,5)}$ et
 $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
 \end{enumerate}
 
+\subsection{Terme d'erreur du processus ARMA(2,1) (Théorique)}
 
+\begin{enumerate}
+\item
+  On représente le processus ARMA(2,1) sous la forme suivante:
+  \begin{align*}
+    y_t = \mu + \gamma_1 y_{t-1} + \gamma_2 y_{t-2} + \epsilon_t - \theta\epsilon_{t-1}
+  \end{align*}
+  
+  En utilisant l'opérateur de rétrodécalage $B$, on peut exprimer cette équation sous la forme suivante:
+  \begin{align*}
+    (1-\theta B)\epsilon_t = y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}
+  \end{align*}
+  
+  On divise ensuite de chaque côté par $(1-\theta B)$, pour obtenir:
+  \begin{align*}
+    \epsilon_t = \frac{1}{(1-\theta B)} \left(y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}\right)
+  \end{align*}
+  
+  L'hypothèse de stationnarité nous permet de poser que $| \theta | < 1$, ce qui nous permet d'utiliser la série géométrique définie comme suit:
+  \begin{align*}
+    \frac{1}{1-\theta B} = \sum_{i=0}^{\infty} \theta^i B^i
+  \end{align*}
+  
+  On obtient donc que 
+  \begin{align*}
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i B^i \left(y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}\right)
+  \end{align*}
+  
+  En appliquant l'opérateur de rétrodécalage à la parenthèse, on obtient la solution:
+  \begin{align*}
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right)
+  \end{align*}
 
-
+\item
+  
+  On exprime l'équation précédente en fonction de $y_t$:
+  \begin{align*}
+    y_t &= \gamma_1 y_{t-1} + \gamma_2 y_{t-2} - \sum_{i=1}^{\infty} \theta^i \left(y_{t-i} - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right) + \epsilon_t + \frac{\mu}{1-\theta} \\
+    &= \gamma_1 y_{t-1} + \gamma_2 y_{t-2} - \left[\theta\left(y_{t-1}-\gamma_1 y_{t-2} - \gamma_2 y_{t-3} \right) + \sum_{i=2}^{\infty} \theta^i \left(y_{t-i} - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right)\right] + \epsilon_t + \frac{\mu}{1-\theta}  \\
+    &= (\gamma_1 - \theta) y_{t-1} - \sum_{i=2}^{\infty} \left(\theta_i+\gamma_1\theta^{i-1} - \gamma_2\theta_{i-2}\right) y_{t-i} + \epsilon_t + \frac{\mu}{1-\theta}
+  \end{align*}
+  Ce qui correspont à la forme autorégressive AR($\infty$) suivante:
+  \begin{align*}
+    y_t = c + \sum_{i=1}^{\infty} \pi_i y_{t-i} + \epsilon_t
+  \end{align*}
+  Avec les paramètres
+  \begin{align*}
+    c &= \frac{\mu}{1-\theta} \\
+    \pi_1 &= (\gamma_1 - \theta) \\
+    \pi_i &= -\left(\theta_i+\gamma_1\theta^{i-1} - \gamma_2\theta_{i-2}\right),\quad i=2,3,\ldots
+  \end{align*}
+  
+\end{enumerate}
 \clearpage
 \input{cc}
 \end{document}
