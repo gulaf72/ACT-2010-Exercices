@@ -223,7 +223,7 @@ On remarque clairement que $\rho_1^{(1)} = \rho_1^{(2)}$ et $\rho_2^{(1)} = \rho
 La fonction d'autocovariance vaut toujours 1 pour $\rho_1$ et vaut 0 ailleurs.
 
 \clearpage
-\subsection{Estimateur des moments pour le processus AR(2)}
+\subsection{Estimateur des moments pour le processus AR(2) (Calculatrice)}
 \begin{enumerate}
 \item 
 Les deux équations de Yule-Walker pour le modèle AR(2) sont les suivantes:
@@ -323,7 +323,7 @@ $\hat{\phi_2} = -0.28757$.
   
 \end{enumerate}
 
-\subsection{Racines caractéristiques et prévision}
+\subsection{Racines caractéristiques et prévision (Théorique)}
 
 \begin{enumerate}
 \item C'est un modèle AR(2) de paramètres $\phi_1=1.5$ et $\phi_2=-0.5$.
@@ -390,9 +390,12 @@ $\hat{\phi_2} = -0.28757$.
     E\left[y_{t+1}\right] &= \alpha_{t} y_1 + \alpha_{t+1} y_0 \\
     Var\left[y_t\right] &= \left[1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2\right]\sigma^2 \\
     Var\left[y_{t+1}\right] &= Var\left[y_t\right] + \alpha_{t-1}^2 \sigma^2 \\
-    Cov\left[y_{t},y_{t+1}\right] &= [\alpha_0\alpha_1 + \alpha_1\alpha_2 + \ldots + \alpha_{t-3}\alpha_{t-2}\right] \sigma^2
+    Cov\left[y_{t},y_{t+1}\right] &= \left[\alpha_0\alpha_1 + \alpha_1\alpha_2 + \ldots + \alpha_{t-3}\alpha_{t-2}\right] \sigma^2
   \end{align*}
-
+\item
+  \begin{align*}
+    \alpha_{t} y_1 + \alpha_{t+1} y_0 \pm 1.96 * \sigma \sqrt{1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2+\alpha_{t-1}^2}
+  \end{align*}
 \end{enumerate}
 
 \clearpage
