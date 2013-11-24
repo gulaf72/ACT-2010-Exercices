@@ -73,8 +73,8 @@ On considère les 10 nombres aléatoires suivants, issus d'une distribution norm
 
 Construisez la série autorégressive d'ordre 1 avec coefficient: 
 \begin{enumerate}
-\item $\gamma = -0.5$
-\item $\gamma = 0.5$
+\item $\phi = -0.5$
+\item $\phi = 0.5$
 \end{enumerate}
 
 Quelle différence observez-vous entre la série avec une corrélation négative et la série avec une corrélation positive ?
@@ -98,12 +98,29 @@ On considère deux processus MA(2), un où $\theta_1 = \theta_2 = \frac{1}{4}$, 
 \subsection{Terme d'erreur du processus ARMA(2,1) (Théorique)}
 
 \begin{enumerate}
-\item Démontrez que le terme d'erreur $\epsilon_t$ d'un processus ARMA(2,1) peut être exprimé sous la forme suivante, où $\mu$ est une constante et $\gamma_1, \gamma_2, \theta$ sont les paramètres du modèle. On considère que la série est stationnaire.
+\item Démontrez que le terme d'erreur $\epsilon_t$ d'un processus ARMA(2,1) peut être exprimé sous la forme suivante, où $\mu$ est une constante et $\phi_1, \phi_2, \theta$ sont les paramètres du modèle. On considère que la série est stationnaire.
 \begin{align*}
-  \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right)
+  \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)
 \end{align*}
 
 \item De plus, démontrez qu'à partir de cette forme du terme d'erreur, on peut obtenir la représentation AR($\infty$) du processus ARMA(2,1).
+\end{enumerate}
+
+\subsection{Racines caractéristiques et prévision}
+
+On considère l'équation en différence suivante:
+\begin{align*}
+  y_t = 1.5 y_{t-1} - 0.5 y_{t-2} + \epsilon_t
+\end{align*}
+\begin{enumerate}
+\item À quel modèle correspond cette équation ?
+\item Trouvez les racines de l'équation homogène.
+\item Démontrez que les racines de l'équation $1-1.5B+0.5B^2$ sont la réciproque des valeurs trouvées à la question précédente.
+\item Est-ce que cette série est stationnaire ?
+\item On suppose que l'on connaît les deux premiers termes de la série $y_0$ et $y_1$. Trouvez la solution générale pour $y_t$ en fonction de la séquence des valeurs de $\epsilon_t$.
+\item Identifiez la forme de la fonction de prédiction pour $y_{T+s}$, sachant les valeurs de $y_{T-1}$ et $y_T$.
+\item Évaluez $E[y_t]$, $E[y_{t+1}]$, $Var[y_t]$, $Var[y_{t+1}]$ et $Cov[y_{t},y_{t+1}]$.
+\item Donnez l'expression d'un intervalle de confiance à 95\% pour la valeur de $y_{t+1}$ 
 \end{enumerate}
 
 \clearpage

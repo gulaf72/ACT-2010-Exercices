@@ -105,7 +105,7 @@ On remarque qu'à chaque itération, le premier terme de la série disparait. Ai
 \subsection{Inversion de processus d'ordre 1 (Théorique)}
 
 \begin{enumerate}
-\item Un processus AR(1) est défini par $y_t = \gamma_1y_{t-1} + \epsilon_t$. En développant le terme $y_{t-1}$, on obtient $y_t = \gamma_1^2y_{t-2}+\gamma_1\epsilon_{t-1}+\epsilon_t$. De manière récursive, on obtient $y_t = \gamma_1^{t}\epsilon_0 + \gamma_1^{t-1}\epsilon_1 + \ldots + \gamma_1\epsilon_{t-1} + \epsilon_t$. ainsi, en faisant tendre $t\to\infty$, on obtient une représentation MA($\infty$).
+\item Un processus AR(1) est défini par $y_t = \phi_1y_{t-1} + \epsilon_t$. En développant le terme $y_{t-1}$, on obtient $y_t = \phi_1^2y_{t-2}+\phi_1\epsilon_{t-1}+\epsilon_t$. De manière récursive, on obtient $y_t = \phi_1^{t}\epsilon_0 + \phi_1^{t-1}\epsilon_1 + \ldots + \phi_1\epsilon_{t-1} + \epsilon_t$. ainsi, en faisant tendre $t\to\infty$, on obtient une représentation MA($\infty$).
 
 \item Un processus MA(1) est défini par $y_t = \epsilon_t - \theta_1\epsilon_{t-1}$. On cherche à substituer le terme $\epsilon_{t-1}$. On développe le terme précédent de la série: $y_{t-1} = \epsilon_{t-1} - \theta_1\epsilon_{t-2}$ et on substitue dans la première expression pour obtenir $y_t = \epsilon_t - \theta_1y_{t-1} - \theta_1^2\epsilon_{t-2}$. De manière récursive, on obtient $y_t = -\theta_1^ty_0-\theta_1^{t-1}y_1-\ldots-\theta_1y_{t-1}+\epsilon_{t}$. Lorsque $t\to\infty$, on obtient une représentation AR($\infty$).
 \end{enumerate}
@@ -114,12 +114,12 @@ On remarque qu'à chaque itération, le premier terme de la série disparait. Ai
 \clearpage
 \subsection{Construction d'une série autorégressive (Calculatrice)}
 
-On utilise la formule $y_t = \gamma_1y_{t-1} + \epsilon_t$.
+On utilise la formule $y_t = \phi_1y_{t-1} + \epsilon_t$.
 
 \begin{center}
 \begin{tabular}{|r|r|r|}
 \hline
-\multicolumn{1}{|l|}{} & \multicolumn{ 2}{c|}{$\gamma$} \\ \hline
+\multicolumn{1}{|l|}{} & \multicolumn{ 2}{c|}{$\phi$} \\ \hline
 \multicolumn{1}{|l|}{$N(0,1)$} & -0,5 & 0,5 \\ \hline
 -1,21 & -1,2100 & -1,2100 \\ \hline
 0,28 & 0,8850 & -0,3250 \\ \hline
@@ -150,35 +150,35 @@ Ensuite, on peut évaluer la fonction d'autocorrélation et comparer le résulta
 \end{align*}
 Fonction d'autocovariance
 \begin{align*}
-\gamma_0^{(1)} &= V[Y_t] \\
+\phi_0^{(1)} &= V[Y_t] \\
 &= V[e_t]+\frac{1}{16}V[e_{t-1}]+\frac{1}{16}V[e_{t-2}] \\
 &= (1+\frac{1}{8})\theta^2_e \\
 &= \frac{9}{8} \sigma^2_e \\
 \end{align*}
 \begin{align*}
-\gamma_1^{(1)} &= Cov(Y_t,Y_{t-1}) \\
+\phi_1^{(1)} &= Cov(Y_t,Y_{t-1}) \\
 &= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-1} - \frac{1}{4}e_{t-2} - \frac{1}{4}e_{t-3} )\\
 &= Cov(-\frac{1}{4}e_{t-1},e_{t-1}) + Cov(-\frac{1}{4}e_{t-2},-\frac{1}{4}e_{t-2}) \\
 &= (-\frac{1}{4}+(-\frac{1}{4})(-\frac{1}{4})) \sigma^2_e \\
 &= -\frac{3}{16} \sigma^2_e \\
 \end{align*}
 \begin{align*}
-\gamma_2^{(1)} &= Cov(Y_t,Y_{t-2}) \\
+\phi_2^{(1)} &= Cov(Y_t,Y_{t-2}) \\
 &= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-2} - \frac{1}{4}e_{t-3} - \frac{1}{4}e_{t-4} )\\
 &= Cov(-\frac{1}{4}e_{t-2},e_{t-2}) \\
 &= -\frac{1}{4} \sigma^2_e \\
 \end{align*}
 \begin{align*}
-\gamma_k^{(1)} &= 0, \qquad \forall k \geq 3
+\phi_k^{(1)} &= 0, \qquad \forall k \geq 3
 \end{align*}
 Fonction d'autocorrélation
 \begin{align*}
-\rho_1^{(1)} &= \frac{\gamma_1^{(1)}}{\gamma_0^{(1)}} \\
+\rho_1^{(1)} &= \frac{\phi_1^{(1)}}{\phi_0^{(1)}} \\
 &= \frac{\frac{-3}{16}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
 &= \frac{-1}{6} \\
 \end{align*}
 \begin{align*}
-\rho_2^{(1)} &= \frac{\gamma_2^{(1)}}{\gamma_0^{(1)}} \\
+\rho_2^{(1)} &= \frac{\phi_2^{(1)}}{\phi_0^{(1)}} \\
 &= \frac{\frac{-1}{4}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
 &= \frac{-2}{9} \\
 \end{align*}
@@ -188,31 +188,31 @@ Fonction d'autocorrélation
 \end{align*}
 Fonction d'autocovariance
 \begin{align*}
-\gamma_0^{(2)} &= V[Y_t] \\
+\phi_0^{(2)} &= V[Y_t] \\
 &= V[e_t]+V[e_{t-1}]+16V[e_{t-2}] \\
 &= 18 \sigma^2_e
 \end{align*}
 \begin{align*}
-\gamma_1^{(2)} &= Cov(Y_t,Y_{t-1}) \\
+\phi_1^{(2)} &= Cov(Y_t,Y_{t-1}) \\
 &= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-1} + e_{t-2} - 4e_{t-3}) \\
 &= Cov(e_{t-1},e_{t-1}) + Cov(-4e_{t-2},e_{t-2}) \\
 &= (1 + (-1)(4))\sigma^2_e \\
 &= -3\sigma^2_e \\
 \end{align*}
 \begin{align*}
-\gamma_2^{(2)} &= Cov(Y_t,Y_{t-2}) \\
+\phi_2^{(2)} &= Cov(Y_t,Y_{t-2}) \\
 &= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-2} + e_{t-3} - 4e_{t-4} )\\
 &= Cov(- 4e_{t-2},e_{t-2}) \\
 &= -4\sigma^2_e \\
 \end{align*}
 Fonction d'autocorrélation
 \begin{align*}
-\rho_1^{(2)} &= \frac{\gamma_1^{(2)}}{\gamma_0^{(2)}} \\
+\rho_1^{(2)} &= \frac{\phi_1^{(2)}}{\phi_0^{(2)}} \\
 &= \frac{-3\sigma^2_e}{18\sigma^2_e} \\
 &= \frac{-1}{6} \\
 \end{align*}
 \begin{align*}
-\rho_2^{(2)} &= \frac{\gamma_2^{(2)}}{\gamma_0^{(2)}} \\
+\rho_2^{(2)} &= \frac{\phi_2^{(2)}}{\phi_0^{(2)}} \\
 &= \frac{-4\sigma^2_e}{18\sigma^2_e} \\
 &= \frac{-2}{9} \\
 \end{align*}
@@ -261,17 +261,17 @@ $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
 \item
   On représente le processus ARMA(2,1) sous la forme suivante:
   \begin{align*}
-    y_t = \mu + \gamma_1 y_{t-1} + \gamma_2 y_{t-2} + \epsilon_t - \theta\epsilon_{t-1}
+    y_t = \mu + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \epsilon_t - \theta\epsilon_{t-1}
   \end{align*}
   
   En utilisant l'opérateur de rétrodécalage $B$, on peut exprimer cette équation sous la forme suivante:
   \begin{align*}
-    (1-\theta B)\epsilon_t = y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}
+    (1-\theta B)\epsilon_t = y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}
   \end{align*}
   
   On divise ensuite de chaque côté par $(1-\theta B)$, pour obtenir:
   \begin{align*}
-    \epsilon_t = \frac{1}{(1-\theta B)} \left(y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}\right)
+    \epsilon_t = \frac{1}{(1-\theta B)} \left(y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}\right)
   \end{align*}
   
   L'hypothèse de stationnarité nous permet de poser que $| \theta | < 1$, ce qui nous permet d'utiliser la série géométrique définie comme suit:
@@ -281,21 +281,21 @@ $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
   
   On obtient donc que 
   \begin{align*}
-    \epsilon_t = \sum_{i=0}^{\infty} \theta^i B^i \left(y_t - \mu - \gamma_1 y_{t-1} - \gamma_2 y_{t-2}\right)
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i B^i \left(y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}\right)
   \end{align*}
   
   En appliquant l'opérateur de rétrodécalage à la parenthèse, on obtient la solution:
   \begin{align*}
-    \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right)
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)
   \end{align*}
 
 \item
   
   On exprime l'équation précédente en fonction de $y_t$:
   \begin{align*}
-    y_t &= \gamma_1 y_{t-1} + \gamma_2 y_{t-2} - \sum_{i=1}^{\infty} \theta^i \left(y_{t-i} - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right) + \epsilon_t + \frac{\mu}{1-\theta} \\
-    &= \gamma_1 y_{t-1} + \gamma_2 y_{t-2} - \left[\theta\left(y_{t-1}-\gamma_1 y_{t-2} - \gamma_2 y_{t-3} \right) + \sum_{i=2}^{\infty} \theta^i \left(y_{t-i} - \gamma_1 y_{t-i-1} - \gamma_2 y_{t-i-2} \right)\right] + \epsilon_t + \frac{\mu}{1-\theta}  \\
-    &= (\gamma_1 - \theta) y_{t-1} - \sum_{i=2}^{\infty} \left(\theta_i+\gamma_1\theta^{i-1} - \gamma_2\theta_{i-2}\right) y_{t-i} + \epsilon_t + \frac{\mu}{1-\theta}
+    y_t &= \phi_1 y_{t-1} + \phi_2 y_{t-2} - \sum_{i=1}^{\infty} \theta^i \left(y_{t-i} - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right) + \epsilon_t + \frac{\mu}{1-\theta} \\
+    &= \phi_1 y_{t-1} + \phi_2 y_{t-2} - \left[\theta\left(y_{t-1}-\phi_1 y_{t-2} - \phi_2 y_{t-3} \right) + \sum_{i=2}^{\infty} \theta^i \left(y_{t-i} - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)\right] + \epsilon_t + \frac{\mu}{1-\theta}  \\
+    &= (\phi_1 - \theta) y_{t-1} - \sum_{i=2}^{\infty} \left(\theta_i+\phi_1\theta^{i-1} - \phi_2\theta_{i-2}\right) y_{t-i} + \epsilon_t + \frac{\mu}{1-\theta}
   \end{align*}
   Ce qui correspont à la forme autorégressive AR($\infty$) suivante:
   \begin{align*}
@@ -304,11 +304,84 @@ $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
   Avec les paramètres
   \begin{align*}
     c &= \frac{\mu}{1-\theta} \\
-    \pi_1 &= (\gamma_1 - \theta) \\
-    \pi_i &= -\left(\theta_i+\gamma_1\theta^{i-1} - \gamma_2\theta_{i-2}\right),\quad i=2,3,\ldots
+    \pi_1 &= (\phi_1 - \theta) \\
+    \pi_i &= -\left(\theta_i+\phi_1\theta^{i-1} - \phi_2\theta_{i-2}\right),\quad i=2,3,\ldots
   \end{align*}
   
 \end{enumerate}
+
+\subsection{Racines caractéristiques et prévision}
+
+\begin{enumerate}
+\item C'est un modèle AR(2) de paramètres $\phi_1=1.5$ et $\phi_2=-0.5$.
+\item L'équation caractéristique prend la forme suivante:
+  \begin{align*}
+    y_t - 1.5 y_{t-1} + 0.5y_{t-2} = 0
+  \end{align*}
+  
+  On pose la solution générale $y_t=A\alpha^t$:
+  \begin{align*}
+    A\alpha^t - 1.5 A\alpha^{t-1} + 0.5A\alpha^{t-2} = 0
+  \end{align*}
+  
+  On divise ensuite par $A\alpha^{t-2}$:
+  \begin{align*}
+    0 &= \alpha^2 - 1.5 \alpha + 0.5\\
+    \alpha &= \frac{1.5 \pm \sqrt{1.5^2-4*1*0.5}}{2} \\
+    &= \left\{0.5 ; 1 \right\}
+  \end{align*}
+
+\item
+  \begin{align*}
+    1 - 1.5B + 0.5B^2 &= 0 \\
+    (1-B)(1-0.5B) &= 0
+  \end{align*}
+  Ce qui nous donne:
+  \begin{align*}
+    B &= \left\{ 1;2 \right\} \\
+    B^{-1} &= \left\{ 1;0.5 \right\}
+  \end{align*}
+
+\item Nous n'avons pas la stationnarité, car $\alpha$ n'est pas à l'intérieur du cercle unité
+
+\item
+  \begin{align*}
+    y_2 &= 1.5 y_1 - 0.5y_0 + \epsilon_2 \\
+    y_3 &= 1.5 y_2 - 0.5y_1 + \epsilon_3 \\
+    &= \epsilon_3 + 1.5 \epsilon_2 + 1.75y_1 - 0.75 y_0 \\
+    y_4 &= 1.5 y_3 - 0.5y_2 + \epsilon_4 \\
+    &= \epsilon_4 + 1.5 \epsilon_3 + 1.75 \epsilon_2 + 1.875 y_1 - 0.875 y_0
+  \end{align*}
+  
+  On peut observer un motif répétifif, que l'on représente sous la forme
+  \begin{align*}
+    y_t &= \sum_{i=0}^{t-2} \alpha_i\epsilon_{t-i} + \alpha_{t-1}y_1 + \alpha_t y_0 \\
+  \end{align*}
+  où 
+  \begin{align*}
+    \alpha_0 &= 1\\ 
+    \alpha_1 &= 1.5\\
+    \alpha_t &= 1-\alpha_{t-1}
+    \alpha_i &= 1.5 \alpha_{i-1} - 0.5 \alpha_{i-2}
+  \end{align*}
+\item 
+  \begin{align*}
+    y_s &= \sum_{i=0}^{s-2} \alpha_i\epsilon_{s-i} + \alpha_{s-1}y_1 + \alpha_s y_0 \\
+    y_{t+s} &= \sum_{i=0}^{s-2} \alpha_i\epsilon_{t+s-i} + \alpha_{s-1}y_{t+1} + \alpha_s y_t \\
+    E_{t+1}\left[y_{t+s}\right] &= \alpha_{s-1} y_{t+1} + \alpha_s y_t
+  \end{align*}
+
+\item
+  \begin{align*}
+    E\left[y_t\right] &= \alpha_{t-1} y_1 + \alpha_t y_0 \\
+    E\left[y_{t+1}\right] &= \alpha_{t} y_1 + \alpha_{t+1} y_0 \\
+    Var\left[y_t\right] &= \left[1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2\right]\sigma^2 \\
+    Var\left[y_{t+1}\right] &= Var\left[y_t\right] + \alpha_{t-1}^2 \sigma^2 \\
+    Cov\left[y_{t},y_{t+1}\right] &= [\alpha_0\alpha_1 + \alpha_1\alpha_2 + \ldots + \alpha_{t-3}\alpha_{t-2}\right] \sigma^2
+  \end{align*}
+
+\end{enumerate}
+
 \clearpage
 \input{cc}
 \end{document}
