@@ -1,2 +1,0 @@
-set.seed(123)
-(serie <- arima.sim(n = 10, list(ar = c(0.5,-0.25))))
