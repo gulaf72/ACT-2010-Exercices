@@ -1,0 +1,13 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 13.04.2 ] */
+
+/* [wxMaxima: input   start ] */
+algsys([(1+t^2)*E - (1+a^2)*V - D = 0, t*E = a*V], [t,E]);
+/* [wxMaxima: input   end   ] */
+
+/* [wxMaxima: input   start ] */
+float(algsys([(1+t^2)*E - (1+0.5^2)*0.04 - 0.01 = 0, t*E = 0.5*0.04], [t,E]));
+/* [wxMaxima: input   end   ] */
+
+/* Maxima can't load/batch files which end with a comment! */
+"Created with wxMaxima"$

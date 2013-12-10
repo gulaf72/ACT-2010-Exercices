@@ -255,6 +255,7 @@ $\hat{\phi_1} = \Sexpr{round(phi1,5)}$ et
 $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
 \end{enumerate}
 
+\clearpage
 \subsection{Terme d'erreur du processus ARMA(2,1) (Théorique)}
 
 \begin{enumerate}
@@ -310,6 +311,7 @@ $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
   
 \end{enumerate}
 
+\clearpage
 \subsection{Racines caractéristiques et prévision (Théorique)}
 
 \begin{enumerate}
@@ -384,6 +386,57 @@ $\hat{\phi_2} = \Sexpr{round(phi2,5)}$.
     \alpha_{t} y_1 + \alpha_{t+1} y_0 \pm 1.96 * \sigma \sqrt{1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2+\alpha_{t-1}^2}
   \end{align*}
 \end{enumerate}
+
+\clearpage
+\subsection{Somme de deux processus}
+
+\begin{enumerate}
+\item 
+  \begin{align*}
+    Var[X_t] &= Var[Y_t] + Var[Z_t] \\
+    &= (1+\alpha^2)\sigma^2_{V} + \sigma^2_{\delta} \\
+    E[X_t,X_{t-1}] &= E[(v_t+\delta_t+\alpha v_{t-1})(v_{t-1}+\delta_{t-1}+\alpha v_{t-2})] \\
+    &= \alpha \sigma^2_{V} \\
+    E[X_t,X_{t-k}] &= 0, \quad\forall k \neq \{ 0,1 \} \\
+    &\Rightarrow \gamma_0,\gamma_1 \neq 0; \gamma_k=0 \forall k \neq \{ 0,1 \} \\
+  \end{align*}
+  Par conséquent, il s'agit d'un modèle MA(1).
+\item 
+  \begin{align*}
+    \gamma_0 &= (1+\theta_1^2) \sigma^2_{\epsilon} = (1+\alpha^2)\sigma^2_{V} + \sigma^2_{\delta} \\
+    \gamma_1 &= \theta\sigma^2_{\epsilon} = \alpha\sigma^2_{V}
+  \end{align*}
+  On résous ce système d'équations numériquement:
+  
+
+<<>>=
+fun1 <- function(par,alpha,sV,sdelta)
+{
+  sqrt(((1+alpha^2)*sV+sdelta-(1+par[1]^2)*par[2])^2
+       +(alpha*sV-par[1]*par[2])^2)
+}
+paramoptimaux1 <- round(optim(c(0.4,0.04),fun1,,0.5,0.04,0.01)$par,5)
+@
+
+On a donc que $\theta$ = \Sexpr{paramoptimaux1[1]} et $\sigma^2_{\epsilon}$ = \Sexpr{paramoptimaux1[2]}
+  On obtient le meme résultat en utilisant un logiciel de calcul symbolique comme Maxima.
+  \end{enumerate}
+  
+\subsection{Projection AR(1)}
+
+\begin{align*}
+  E_t[x_{t+2}] &= \phi^2 x_t = 0.4^2*1.5 = 0.24 \\
+  V_t[x_{t+2}] &= (1+\phi^2)\sigma^2_{\epsilon} = (1+0.4^2)*0.25 = 0.29
+\end{align*}
+
+Intervalle de confiance:
+
+\begin{align*}
+  IC &= E_t[x_{t+2}] \pm \Phi^{-1}(0.975)\sqrt{V_t[x_{t+2}]} \\
+  &= 0.4^2*1.5 \pm 1.96 \sqrt{(1+0.4^2)*0.25} \\
+  &= [-0.815492;1.295492]
+\end{align*}
+
 
 \clearpage
 \input{cc}

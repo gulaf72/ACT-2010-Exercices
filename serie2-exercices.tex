@@ -123,6 +123,25 @@ On considère l'équation en différence suivante:
 \item Donnez l'expression d'un intervalle de confiance à 95\% pour la valeur de $y_{t+1}$ 
 \end{enumerate}
 
+\subsection{Somme de deux processus}
+
+Soit les deux processus suivants:
+\begin{align*}
+Y_t &= V_t + \alpha V_{t-1} \\
+Z_t &= \delta_t
+\end{align*}
+
+On ajoute que $V_t$ et $\delta_t$ sont indépendants.
+
+\begin{enumerate}
+\item Déterminer le modèle classique pour le processus $X_t = Y_t + Z_t$ sous la forme ARMA(p,q).
+\item Évaluer les paramètres $\theta_1,\ldots,\theta_n, \phi_1, \ldots \phi_n$ et $\sigma^2_{\epsilon}$ du modèle identifié précédemment, considérant que $\alpha=0.5, \sigma^2_{V}=0.04$ et $\sigma^2_{\delta}=0.01$.
+\end{enumerate}
+
+\subsection{Projection AR(1)}
+
+Trouver la valeur projetée $x_{t+2}$ et l'intervalle de confiance à 95\% pour le processus $AR(1)$ de paramètre $\phi=0.4$ et $\sigma^2_{\epsilon}=0.25$, si $x_t=1.5$.
+
 \clearpage
 
 \input{cc}
