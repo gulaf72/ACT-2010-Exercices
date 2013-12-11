@@ -1,0 +1,70 @@
+\documentclass{article} 
+\usepackage{graphicx}
+\usepackage[francais]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{verbatim} 
+\usepackage{float} 
+\usepackage{hyperref}
+\usepackage{scrtime}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\usepackage{Sweave}
+\begin{document}
+\input{pagetitre}
+\addtocounter{section}{2}
+\section{Modèles de volatilité stochastique}
+
+\subsection{Variance du processus ARCH(2)}
+
+On identifie d'abord la moyenne conditionnelle de $y_t$:
+\begin{align}
+E_{t-1}[y_t] &= E_{t-1}[a_0 + a_1 y_{t-1} + \epsilon_t] \\
+&= a_0 + a_1 y_{t-1}
+\end{align}
+La variance conditionnelle peut alors s'obtenir en utilisant la définition habituelle:
+\begin{align*}
+V_{t-1}[y_t | y_{t-1}, y_{t-2}, \ldots] &= E_{t-1}[y_t - E_{t-1}[y_t]]^{2} \\
+&= E_{t-1}[(a_0 + a_1 y_{t-1} + \epsilon_t)-(a_0 + a_1 y_{t-1})]^{2} \\
+&= E_{t-1}[\epsilon_t]^{2} \\
+&= E_{t-1}[\alpha_0 + \alpha_1\epsilon_{t-1}^2 + \alpha_2\epsilon_{t-2}^2] \\
+&= \alpha_0 + \alpha_1\epsilon_{t-1}^2 + \alpha_2\epsilon_{t-2}^2
+\end{align*}
+
+La variance inconditionnelle s'obtient en trouvant la solution particulière pour $y_t$:
+\begin{align*}
+•y_t &= a_0 + a_1 y_{t-1} + \epsilon_t \\
+&= (1+a_1)a_0 + a_1^2 y_{t-2} + a_1 \epsilon_{t-1} + \epsilon_t \\
+&= \cdots \\
+&= (a+a_1+a_2+a_3+\ldots)a_0 + \epsilon_t + a_1\epsilon_{t-1} + a_2\epsilon_{t-2} + \ldots \\
+&= \frac{a_0}{1-a_1} + \sum_{i=0}^{\infty} a_1^{i}\epsilon_{t-i}
+\end{align*}
+
+On évalue la variance de cette dernière expression:
+\begin{align*}
+•Var[y_t] &= Var[\sum_{i=0}^{\infty} a_1^{i}\epsilon_{t-i}] \\
+&= \sum_{i=0}^{\infty} a_1^{2i} Var[\epsilon_{t-i}] \\
+&= \frac{\sigma^2}{1-a_1^2}
+\end{align*}
+
+À partir de la définition, on a que:
+\begin{align*}
+E[\epsilon_t^2] &= \alpha_0 + \alpha_1 E_[\epsilon_{t-1}^2] + \alpha_2 E[\epsilon_{t-2}^2].
+\end{align*}
+
+Comme la variance inconditionnelle de $\epsilon_t$ est identique à celle de $\epsilon_{t-1}$ et $\epsilon_{t-2}$, on peut affirmer que:
+\begin{align*}
+E[\epsilon_t^2] &= \frac{\alpha_0}{1-\alpha_1-\alpha_2} \\
+&= \sigma^2.
+\end{align*}
+
+On obtient donc que la variance inconditionnelle de $y_t$ est
+\begin{align*}
+•Var[y_t] &= \frac{\alpha_0}{(1-\alpha_1-\alpha_2)(1-a_1^2)}.
+\end{align*}
+
+\clearpage
+\input{cc}
+\end{document}

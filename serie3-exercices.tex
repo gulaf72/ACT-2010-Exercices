@@ -1,0 +1,50 @@
+\documentclass[11pt,english,francais]{article}
+\usepackage{scrtime}
+\usepackage{natbib} 
+\usepackage{tikz} 
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath} 
+\usepackage{amsfonts} 
+\usepackage{amsthm} 
+\usepackage{thmtools}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage[hypcap]{caption}
+\usepackage[off]{auto-pst-pdf}
+\usepackage[scale=2]{ccicons}
+\usepackage{tabularx}
+\DeclareMathOperator{\sgn}{sgn}
+
+\begin{document}
+
+\input{pagetitre}
+
+\addtocounter{section}{2}
+
+\section{Modèles de volatilité stochastique}
+\label{sec:serie-dexercices-3}
+
+\subsection{Variance du processus ARCH(2)}
+\label{sec:exercice-3-1}
+
+On considère un processus ARCH(2) dont le carré des résidus répond à l'équation suivante \footnote{Cet exercice est inspiré de l'exercice 8 du chapitre 3 de Enders (2004)} :
+\begin{align*}
+\epsilon_t^2 &= \alpha_0 + \alpha_1\epsilon_{t-1}^2 + \alpha_2\epsilon_{t-2}^2.
+\end{align*}
+
+On suppose que les résidus proviennent du modèle suivant:
+\begin{align*}
+y_t &= a_0 + a_1 y_{t-1} + \epsilon_t.
+\end{align*}
+
+Trouvez la variance conditionnelle et inconditionnelle de $\left\{ y_t \right\}$.
+
+\clearpage
+
+\input{cc}
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
