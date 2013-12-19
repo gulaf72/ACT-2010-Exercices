@@ -1,25 +1,39 @@
-\documentclass{article} 
-\usepackage{graphicx}
-\usepackage[francais]{babel} 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} 
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{verbatim} 
-\usepackage{float} 
-\usepackage{hyperref}
-\usepackage{scrtime}
-\usepackage[scale=2]{ccicons}
-\usepackage{tabularx}
-\usepackage{Sweave}
-\begin{document}
-\input{pagetitre}
-\addtocounter{section}{2}
-\section{Modèles de volatilité stochastique}
+\chapter{Modèles de volatilité stochastique}
+\label{chap:modeles-volatilite}
 
-\subsection{Variance du processus ARCH(2)}
+\Opensolutionfile{reponses}[reponses-modeles-volatilite]
+\Opensolutionfile{solutions}[solutions-modeles-volatilite]
 
-On identifie d'abord la moyenne conditionnelle de $y_t$:
+\begin{Filesave}{reponses}
+\bigskip
+\section*{Réponses}
+
+\end{Filesave}
+
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref{chap:modeles-volatilite}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:modeles-volatilite}}
+
+\end{Filesave}
+
+<<echo=FALSE>>=
+options(width = 55)
+@
+
+\begin{exercice}
+  On considère un processus ARCH(2) dont le carré des résidus répond à l'équation suivante \footnote{Cet exercice est inspiré de l'exercice 8 du chapitre 3 de Enders (2004)} :
+\begin{align*}
+\epsilon_t^2 &= \alpha_0 + \alpha_1\epsilon_{t-1}^2 + \alpha_2\epsilon_{t-2}^2.
+\end{align*}
+
+On suppose que les résidus proviennent du modèle suivant:
+\begin{align*}
+y_t &= a_0 + a_1 y_{t-1} + \epsilon_t.
+\end{align*}
+
+Trouvez la variance conditionnelle et inconditionnelle de $\left\{ y_t \right\}$.
+\begin{sol}
+  On identifie d'abord la moyenne conditionnelle de $y_t$:
 \begin{align}
 E_{t-1}[y_t] &= E_{t-1}[a_0 + a_1 y_{t-1} + \epsilon_t] \\
 &= a_0 + a_1 y_{t-1}
@@ -64,7 +78,13 @@ On obtient donc que la variance inconditionnelle de $y_t$ est
 \begin{align*}
 •Var[y_t] &= \frac{\alpha_0}{(1-\alpha_1-\alpha_2)(1-a_1^2)}.
 \end{align*}
+\end{sol}
+\end{exercice}
 
-\clearpage
-\input{cc}
-\end{document}
+\Closesolutionfile{solutions}
+\Closesolutionfile{reponses}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "exercices_series_chrono"
+%%% End:

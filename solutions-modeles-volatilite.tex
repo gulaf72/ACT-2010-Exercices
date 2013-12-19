@@ -1,25 +1,8 @@
-\documentclass{article} 
-\usepackage{graphicx}
-\usepackage[francais]{babel} 
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc} 
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{verbatim} 
-\usepackage{float} 
-\usepackage{hyperref}
-\usepackage{scrtime}
-\usepackage[scale=2]{ccicons}
-\usepackage{tabularx}
-\usepackage{Sweave}
-\begin{document}
-\input{pagetitre}
-\addtocounter{section}{2}
-\section{Modèles de volatilité stochastique}
+\section*{Chapitre \ref{chap:modeles-volatilite}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:modeles-volatilite}}
 
-\subsection{Variance du processus ARCH(2)}
-
-On identifie d'abord la moyenne conditionnelle de $y_t$:
+\begin{solution}{3.1}
+  On identifie d'abord la moyenne conditionnelle de $y_t$:
 \begin{align}
 E_{t-1}[y_t] &= E_{t-1}[a_0 + a_1 y_{t-1} + \epsilon_t] \\
 &= a_0 + a_1 y_{t-1}
@@ -64,7 +47,4 @@ On obtient donc que la variance inconditionnelle de $y_t$ est
 \begin{align*}
 •Var[y_t] &= \frac{\alpha_0}{(1-\alpha_1-\alpha_2)(1-a_1^2)}.
 \end{align*}
-
-\clearpage
-\input{cc}
-\end{document}
+\end{solution}

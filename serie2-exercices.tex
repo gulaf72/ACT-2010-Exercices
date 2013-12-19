@@ -1,44 +1,86 @@
-\documentclass[11pt,english,francais]{article}
-\usepackage{scrtime}
-\usepackage{natbib} 
-\usepackage{tikz} 
-\usepackage{multirow}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath} 
-\usepackage{amsfonts} 
-\usepackage{amsthm} 
-\usepackage{thmtools}
-\usepackage{hyperref}
-\usepackage{cleveref}
-\usepackage[hypcap]{caption}
-\usepackage[off]{auto-pst-pdf}
-\usepackage[scale=2]{ccicons}
-\usepackage{tabularx}
-\DeclareMathOperator{\sgn}{sgn}
+\chapter{Modèles classiques pour séries chronologiques}
+\label{chap:modeles-classiques}
 
-\begin{document}
+\Opensolutionfile{reponses}[reponses-modeles-classiques]
+\Opensolutionfile{solutions}[solutions-modeles-classiques]
 
-\input{pagetitre}
+\begin{Filesave}{reponses}
+\bigskip
+\section*{Réponses}
 
-\addtocounter{section}{1}
+\end{Filesave}
 
-\section{Modèles classiques pour séries chronologiques}
+\begin{Filesave}{solutions}
+\section*{Chapitre \ref{chap:modeles-classiques}}
+\addcontentsline{toc}{section}{Chapitre \protect\ref{chap:modeles-classiques}}
 
-\subsection{Zone de stationnarité pour AR(2) (Théorique)}
-\label{sec:zone-de-stat}
+\end{Filesave}
 
 
-Pour avoir la stationnarité, il faut que les racines du polynôme caractéristique soient inférieures à 1 en valeur absolue. Démontrez que pour le modèle AR(2), la stationnarité est possible si et seulement si les trois conditions suivantes sont réunies:
+\begin{exercice}
+  Pour avoir la stationnarité, il faut que les racines du polynôme caractéristique soient inférieures à 1 en valeur absolue. Démontrez que pour le modèle AR(2), la stationnarité est possible si et seulement si les trois conditions suivantes sont réunies:
 \begin{align*}
   \phi_1 + \phi_2 &< 1 \\
   \phi_2 - \phi_1 &< 1 \\
   |\phi_2| &< 1
 \end{align*}
+\begin{sol}
+  On obtient les racines de l'équation caractéristique en utilisant la formule quadratique habituelle
 
-\subsection{Ordre d'intégration (Théorique)}
-\label{sec:ordre-dintegration}
+\begin{align*}
+\frac{\phi_1\pm\sqrt{\phi_1^2+4\phi_2}}{-2\phi_2}
+\end{align*}
 
-\begin{enumerate}
+On considère les inverses des deux racines, $A_1$ et $A_2$.
+
+\begin{align*}
+A_1 &= \frac{2\phi_2}{-\phi_1-\sqrt{\phi_1^2+4\phi_2}} \\
+&= \frac{2\phi_2}{-\phi_1-\sqrt{\phi_1^2+4\phi_2}} \left[\frac{-\phi_1+\sqrt{\phi_1^2+4\phi_2}}{-\phi_1+\sqrt{\phi_1^2+4\phi_2}} \right] \\
+&= \frac{2\phi_2(-\phi_1+\sqrt{\phi_1^2+4\phi_2})}{\phi_1^2-(\phi_1^2+4\phi_2)}\\
+&= \frac{\phi_1-\sqrt{\phi_1^2+4\phi_2}}{2}\\
+A_2 &= \frac{\phi_1+\sqrt{\phi_1^2+4\phi_2}}{2}
+\end{align*}
+
+Il y a 2 situations possibles: soit les racines sont réelles ($\phi_1^2+4\phi_2>0$) ou elles sont complexes ($\phi_1^2+4\phi_2<0$).
+\begin{itemize}
+\item \textbf{Racines réelles:}
+Comme les racines doivent être plus grandes que 1, alors nécessairement leurs inverses $|A_1|<1$ et $|A_2|<1$. Nous avons donc:
+\begin{align*}
+-1 &< \frac{\phi_1-\sqrt{\phi_1^2+4\phi_2}}{2} <  \frac{\phi_1+\sqrt{\phi_1^2+4\phi_2}}{2} < 1 \\
+\Leftrightarrow -2 &< \phi_1-\sqrt{\phi_1^2+4\phi_2} < \phi_1+\sqrt{\phi_1^2+4\phi_2} < 2
+\end{align*}
+En observant la première inégalité, on a:
+\begin{align*}
+-2 < \phi_1-\sqrt{\phi_1^2+4\phi_2}
+&\Leftrightarrow \sqrt{\phi_1^2+4\phi_2}<\phi_1+2 \\
+&\Leftrightarrow \phi_1^2+4\phi_2 < \phi_1^2+4\phi_1+4 \\
+&\Leftrightarrow \phi_2 < \phi_1 + 1 \\
+&\Leftrightarrow \phi_2 - \phi_1 < 1
+\end{align*}
+Ce qui correspond à la seconde condition. En considérant la seconde inégalité, on obtient, de la même façon, la première inégalité:
+\begin{align*}
+\phi_1+\sqrt{\phi_1^2+4\phi_2} &< 2 \\
+&\Leftrightarrow \phi_1 + \phi_2 < 1
+\end{align*}
+Ces deux conditions réunies avec un discriminant positif forment la région de stationnarité pour des racines réelles.
+
+\item \textbf{Racines complexes:}  
+On considère la situation où $\phi_1^2+4\phi_2<0$. Ici, on aura des conjugués complexes et $|A_1| = |A_2| <1$ seulement si $|A_1|^2<1$.
+\begin{align*}
+|A_1|^2 &=\frac{\phi_1^2+(-\phi_1^2-4\phi_2}{4}=-\phi^2 \\
+&\Leftrightarrow \phi_2>-1 \\
+&\Leftrightarrow |\phi_2|<1
+\end{align*}
+Ce résultat réuni avec un discriminant négatif forment la région de stationnarité pour des racines complexes.
+\end{itemize}
+\end{sol}
+\end{exercice}
+
+
+
+
+\begin{exercice}
+  \begin{enumerate}
 \item 
 Un polynôme d'ordre $k$ en t est intégré d'ordre $k$ puisque
 \begin{align*}
@@ -51,21 +93,58 @@ Démontrez cette affirmation.
 Démontrez que si $x_t$ est stationnaire, alors $(1-B)x_t$ est aussi stationnaire.
 \end{enumerate}
 
-\subsection{Inversion de processus d'ordre 1 (Théorique)}
-\label{sec:invers-de-proc}
-
+\begin{sol}
 \begin{enumerate}
+
+\item On obtient ce résultat par récurrence. Par exemple, pour $k=2$, on a :
+
+\begin{align*}
+(1-B)^2 (a_0+a_1t+a_2t^2) &= (1-B) ((a_0+a_1t+a_2t^2)\\ &\quad- (a_0+a_1(t-1)+a_2(t-1)^2)) \\
+&= (1-B) (a_1+a_2(2t+1)) \\
+&= (a_1+a_2(2t+1)) - (a_1+a_2(2(t-1)+1)) \\
+&= 2a_2
+\end{align*}
+
+En général, on obtient:
+
+\begin{align*}
+(1-B)^k (a_0+a_1t+a_2t^2+\ldots+a_kt^k) &= (1-B)^{k-1} ((a_0+a_1t+a_2t^2+\ldots+a_kt^k)\\ &\quad- (a_0+a_1(t-1)+a_2(t-1)^2+\ldots+a_k(t-1)^k)) \\
+&= (1-B)^{k-1} (a_1 + 2a_2t+\ldots+a_k(t^k-(t-1)^k))
+\end{align*}
+
+On remarque qu'à chaque itération, le premier terme de la série disparait. Ainsi, après $k$ itérations, il ne restera que le terme en $a_k$ avec son coefficient, qui correspont à $k!$. On obtient ainsi la solution générale.
+
+\item Une série est dite stationnaire lorsque chaque terme est un terme d'erreur dont la distribution est constante au fil du temps. Ainsi, la distribution de la différence de deux termes consécutifs de la série sera aussi constante au fil du temps. Par exemple:
+\begin{align*}
+\epsilon_t \sim N(0,\sigma^2)  \\
+\epsilon_t - \epsilon_{t-1} \sim N(0,2\sigma^2) \\
+\end{align*}
+
+\end{enumerate}
+\end{sol}
+\end{exercice}
+
+
+\begin{exercice}
+  \begin{enumerate}
 \item 
 Démontrez algébriquement qu'un processus AR(1) est équivalent à un processus MA($\infty$).
 
 \item 
 Démontrez algébriquement qu'un processus MA(1) est équivalent à un processus AR($\infty$).
 \end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+\item Un processus AR(1) est défini par $y_t = \phi_1y_{t-1} + \epsilon_t$. En développant le terme $y_{t-1}$, on obtient $y_t = \phi_1^2y_{t-2}+\phi_1\epsilon_{t-1}+\epsilon_t$. De manière récursive, on obtient $y_t = \phi_1^{t}\epsilon_0 + \phi_1^{t-1}\epsilon_1 + \ldots + \phi_1\epsilon_{t-1} + \epsilon_t$. ainsi, en faisant tendre $t\to\infty$, on obtient une représentation MA($\infty$).
 
-\subsection{Construction d'une série autorégressive (Calculatrice)}
-\label{sec:constr-dune-serie}
+\item Un processus MA(1) est défini par $y_t = \epsilon_t - \theta_1\epsilon_{t-1}$. On cherche à substituer le terme $\epsilon_{t-1}$. On développe le terme précédent de la série: $y_{t-1} = \epsilon_{t-1} - \theta_1\epsilon_{t-2}$ et on substitue dans la première expression pour obtenir $y_t = \epsilon_t - \theta_1y_{t-1} - \theta_1^2\epsilon_{t-2}$. De manière récursive, on obtient $y_t = -\theta_1^ty_0-\theta_1^{t-1}y_1-\ldots-\theta_1y_{t-1}+\epsilon_{t}$. Lorsque $t\to\infty$, on obtient une représentation AR($\infty$).
+\end{enumerate}
+\end{sol}
+\end{exercice}
 
-On considère les 10 nombres aléatoires suivants, issus d'une distribution normale centrée réduite:
+
+\begin{exercice}
+  On considère les 10 nombres aléatoires suivants, issus d'une distribution normale centrée réduite:
 
 \begin{verbatim}
  [1] -1.21  0.28  1.08 -2.35  0.43  0.51 -0.57 -0.55 -0.56 -0.89
@@ -78,14 +157,122 @@ Construisez la série autorégressive d'ordre 1 avec coefficient:
 \end{enumerate}
 
 Quelle différence observez-vous entre la série avec une corrélation négative et la série avec une corrélation positive ?
+\begin{sol}
+  On utilise la formule $y_t = \phi_1y_{t-1} + \epsilon_t$.
 
-\subsection{Deux processus MA(2) (Théorique)}
+\begin{center}
+\begin{tabular}{|r|r|r|}
+\hline
+\multicolumn{1}{|l|}{} & \multicolumn{ 2}{c|}{$\phi$} \\ \hline
+\multicolumn{1}{|l|}{$N(0,1)$} & -0,5 & 0,5 \\ \hline
+-1,21 & -1,2100 & -1,2100 \\ \hline
+0,28 & 0,8850 & -0,3250 \\ \hline
+1,08 & 0,6375 & 0,9175 \\ \hline
+-2,35 & -2,6688 & -1,8913 \\ \hline
+0,43 & 1,7644 & -0,5156 \\ \hline
+0,51 & -0,3722 & 0,2522 \\ \hline
+-0,57 & -0,3839 & -0,4439 \\ \hline
+-0,55 & -0,3580 & -0,7720 \\ \hline
+-0,56 & -0,3810 & -0,9460 \\ \hline
+-0,89 & -0,6995 & -1,3630 \\ \hline
+\end{tabular}
+\end{center}
 
-On considère deux processus MA(2), un où $\theta_1 = \theta_2 = \frac{1}{4}$, et un autre où $\theta_1=-1$ et $\theta_2 = 4$. Démontrez que ces processus ont la même fonction d'autocorrélation.
+Les séries avec une corrélation négative ont tendance à aller dans la direction contraire des termes précédents alors que celles avec une corrélation positive ont tendance à aller dans la même direction que les termes précédents.
 
-\subsection{Estimateur des moments pour le processus AR(2) (Théorique et calculatrice)}
+Le tableur \url{constructionserieAR.ods} contient les calculs effectués.
+\end{sol}
+\end{exercice}
+
+\begin{exercice}
+  On considère deux processus MA(2), un où $\theta_1 = \theta_2 = \frac{1}{4}$, et un autre où $\theta_1=-1$ et $\theta_2 = 4$. Démontrez que ces processus ont la même fonction d'autocorrélation.
+  \begin{sol}
+    Il suffit de calculer la fonction d'autorégression pour chaque processus MA(2).
+Ensuite, on peut évaluer la fonction d'autocorrélation et comparer le résultat obtenu.
 
 \begin{enumerate}
+\item Premier processus avec:
+\begin{align*}
+\theta_1 = \theta_2 = \frac{1}{4}
+\end{align*}
+Fonction d'autocovariance
+\begin{align*}
+\phi_0^{(1)} &= V[Y_t] \\
+&= V[e_t]+\frac{1}{16}V[e_{t-1}]+\frac{1}{16}V[e_{t-2}] \\
+&= (1+\frac{1}{8})\theta^2_e \\
+&= \frac{9}{8} \sigma^2_e \\
+\end{align*}
+\begin{align*}
+\phi_1^{(1)} &= Cov(Y_t,Y_{t-1}) \\
+&= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-1} - \frac{1}{4}e_{t-2} - \frac{1}{4}e_{t-3} )\\
+&= Cov(-\frac{1}{4}e_{t-1},e_{t-1}) + Cov(-\frac{1}{4}e_{t-2},-\frac{1}{4}e_{t-2}) \\
+&= (-\frac{1}{4}+(-\frac{1}{4})(-\frac{1}{4})) \sigma^2_e \\
+&= -\frac{3}{16} \sigma^2_e \\
+\end{align*}
+\begin{align*}
+\phi_2^{(1)} &= Cov(Y_t,Y_{t-2}) \\
+&= Cov(e_t - \frac{1}{4}e_{t-1} - \frac{1}{4}e_{t-2}, e_{t-2} - \frac{1}{4}e_{t-3} - \frac{1}{4}e_{t-4} )\\
+&= Cov(-\frac{1}{4}e_{t-2},e_{t-2}) \\
+&= -\frac{1}{4} \sigma^2_e \\
+\end{align*}
+\begin{align*}
+\phi_k^{(1)} &= 0, \qquad \forall k \geq 3
+\end{align*}
+Fonction d'autocorrélation
+\begin{align*}
+\rho_1^{(1)} &= \frac{\phi_1^{(1)}}{\phi_0^{(1)}} \\
+&= \frac{\frac{-3}{16}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
+&= \frac{-1}{6} \\
+\end{align*}
+\begin{align*}
+\rho_2^{(1)} &= \frac{\phi_2^{(1)}}{\phi_0^{(1)}} \\
+&= \frac{\frac{-1}{4}\sigma^2_e}{\frac{9}{8}\sigma^2_e} \\
+&= \frac{-2}{9} \\
+\end{align*}
+\item Second processus avec:
+\begin{align*}
+\theta_1 = -1 \quad \theta_2 = 4
+\end{align*}
+Fonction d'autocovariance
+\begin{align*}
+\phi_0^{(2)} &= V[Y_t] \\
+&= V[e_t]+V[e_{t-1}]+16V[e_{t-2}] \\
+&= 18 \sigma^2_e
+\end{align*}
+\begin{align*}
+\phi_1^{(2)} &= Cov(Y_t,Y_{t-1}) \\
+&= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-1} + e_{t-2} - 4e_{t-3}) \\
+&= Cov(e_{t-1},e_{t-1}) + Cov(-4e_{t-2},e_{t-2}) \\
+&= (1 + (-1)(4))\sigma^2_e \\
+&= -3\sigma^2_e \\
+\end{align*}
+\begin{align*}
+\phi_2^{(2)} &= Cov(Y_t,Y_{t-2}) \\
+&= Cov(e_t + e_{t-1} - 4e_{t-2}, e_{t-2} + e_{t-3} - 4e_{t-4} )\\
+&= Cov(- 4e_{t-2},e_{t-2}) \\
+&= -4\sigma^2_e \\
+\end{align*}
+Fonction d'autocorrélation
+\begin{align*}
+\rho_1^{(2)} &= \frac{\phi_1^{(2)}}{\phi_0^{(2)}} \\
+&= \frac{-3\sigma^2_e}{18\sigma^2_e} \\
+&= \frac{-1}{6} \\
+\end{align*}
+\begin{align*}
+\rho_2^{(2)} &= \frac{\phi_2^{(2)}}{\phi_0^{(2)}} \\
+&= \frac{-4\sigma^2_e}{18\sigma^2_e} \\
+&= \frac{-2}{9} \\
+\end{align*}
+\end{enumerate}
+
+On remarque clairement que $\rho_1^{(1)} = \rho_1^{(2)}$ et $\rho_2^{(1)} = \rho_2^{(2)}$. 
+La fonction d'autocovariance vaut toujours 1 pour $\rho_1$ et vaut 0 ailleurs.
+  \end{sol}
+\end{exercice}
+
+
+\begin{exercice}
+  \begin{enumerate}
 \item En utilisant les équations de Yule-Walker, dérivez un estimateur des moments pour les paramètres $\phi_1$ et $\phi_1$ d'un processus AR(2). \\
 
 \item Estimez les paramètres du processus AR(2) à partir de la série suivante:
@@ -94,10 +281,57 @@ On considère deux processus MA(2), un où $\theta_1 = \theta_2 = \frac{1}{4}$, 
  [7] -1.6369769 -0.4596686 -0.2933815 -1.0995973
 \end{verbatim}
 \end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+\item 
+Les deux équations de Yule-Walker pour le modèle AR(2) sont les suivantes:
+\begin{align*}
+\rho_1 = \phi_1 + \rho_1 \phi_2 \\
+\rho_2 = \rho_1\phi_1 + \phi_2
+\end{align*}
 
-\subsection{Terme d'erreur du processus ARMA(2,1) (Théorique)}
+En utilisant l'estimateur de la fonction d'autocovariance $\hat{\rho}$, on obtient alors:
 
-\begin{enumerate}
+\begin{align*}
+\hat{\phi_1} = \frac{\hat{\rho_1}(1-\hat{\rho_2})}{1-\hat{\rho_1}^2} \\
+\hat{\phi_2} = \frac{\hat{\rho_2} - \hat{\rho_1}^2}{1-\hat{\rho_1}^2}
+\end{align*}
+
+
+\item
+
+\begin{Schunk}
+\begin{Sinput}
+> set.seed(123)
+> (serie <- arima.sim(n = 10, list(ar = c(0.5,-0.25))))
+\end{Sinput}
+\begin{Soutput}
+Time Series:
+Start = 1 
+End = 10 
+Frequency = 1 
+ [1]  1.1617660  0.6981185  0.1693004 -0.6457205
+ [5]  1.4217278  1.3701445 -1.6369769 -0.4596686
+ [9] -0.2933815 -1.0995973
+\end{Soutput}
+\begin{Sinput}
+> acf.serie <- acf(serie,type="correlation",plot=FALSE)$acf[2:3]
+> phi1 <- acf.serie[1]*(1-acf.serie[2]) / (1-acf.serie[1]^2)
+> phi2 <- (acf.serie[2] - acf.serie[1]^2) / (1-acf.serie[1]^2)
+\end{Sinput}
+\end{Schunk}
+
+On obtient $\hat{\rho_1} = 0.07455$ et $\hat{\rho_2} = -0.28041$. 
+Ce qui nous donne les paramètres du modèle AR(2) suivants:
+$\hat{\phi_1} = 0.09599$ et 
+$\hat{\phi_2} = -0.28757$.
+\end{enumerate}
+\end{sol}
+\end{exercice}
+
+
+\begin{exercice}
+  \begin{enumerate}
 \item Démontrez que le terme d'erreur $\epsilon_t$ d'un processus ARMA(2,1) peut être exprimé sous la forme suivante, où $\mu$ est une constante et $\phi_1, \phi_2, \theta$ sont les paramètres du modèle. On considère que la série est stationnaire.
 \begin{align*}
   \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)
@@ -105,10 +339,63 @@ On considère deux processus MA(2), un où $\theta_1 = \theta_2 = \frac{1}{4}$, 
 
 \item De plus, démontrez qu'à partir de cette forme du terme d'erreur, on peut obtenir la représentation AR($\infty$) du processus ARMA(2,1).
 \end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+\item
+  On représente le processus ARMA(2,1) sous la forme suivante:
+  \begin{align*}
+    y_t = \mu + \phi_1 y_{t-1} + \phi_2 y_{t-2} + \epsilon_t - \theta\epsilon_{t-1}
+  \end{align*}
+  
+  En utilisant l'opérateur de rétrodécalage $B$, on peut exprimer cette équation sous la forme suivante:
+  \begin{align*}
+    (1-\theta B)\epsilon_t = y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}
+  \end{align*}
+  
+  On divise ensuite de chaque côté par $(1-\theta B)$, pour obtenir:
+  \begin{align*}
+    \epsilon_t = \frac{1}{(1-\theta B)} \left(y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}\right)
+  \end{align*}
+  
+  L'hypothèse de stationnarité nous permet de poser que $| \theta | < 1$, ce qui nous permet d'utiliser la série géométrique définie comme suit:
+  \begin{align*}
+    \frac{1}{1-\theta B} = \sum_{i=0}^{\infty} \theta^i B^i
+  \end{align*}
+  
+  On obtient donc que 
+  \begin{align*}
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i B^i \left(y_t - \mu - \phi_1 y_{t-1} - \phi_2 y_{t-2}\right)
+  \end{align*}
+  
+  En appliquant l'opérateur de rétrodécalage à la parenthèse, on obtient la solution:
+  \begin{align*}
+    \epsilon_t = \sum_{i=0}^{\infty} \theta^i \left(y_{t-i} - \mu - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)
+  \end{align*}
 
-\subsection{Racines caractéristiques et prévision}
+\item
+  
+  On exprime l'équation précédente en fonction de $y_t$:
+  \begin{align*}
+    y_t &= \phi_1 y_{t-1} + \phi_2 y_{t-2} - \sum_{i=1}^{\infty} \theta^i \left(y_{t-i} - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right) + \epsilon_t + \frac{\mu}{1-\theta} \\
+    &= \phi_1 y_{t-1} + \phi_2 y_{t-2} - \left[\theta\left(y_{t-1}-\phi_1 y_{t-2} - \phi_2 y_{t-3} \right) + \sum_{i=2}^{\infty} \theta^i \left(y_{t-i} - \phi_1 y_{t-i-1} - \phi_2 y_{t-i-2} \right)\right] + \epsilon_t + \frac{\mu}{1-\theta}  \\
+    &= (\phi_1 - \theta) y_{t-1} - \sum_{i=2}^{\infty} \left(\theta_i+\phi_1\theta^{i-1} - \phi_2\theta_{i-2}\right) y_{t-i} + \epsilon_t + \frac{\mu}{1-\theta}
+  \end{align*}
+  Ce qui correspont à la forme autorégressive AR($\infty$) suivante:
+  \begin{align*}
+    y_t = c + \sum_{i=1}^{\infty} \pi_i y_{t-i} + \epsilon_t
+  \end{align*}
+  Avec les paramètres
+  \begin{align*}
+    c &= \frac{\mu}{1-\theta} \\
+    \pi_1 &= (\phi_1 - \theta) \\
+    \pi_i &= -\left(\theta_i+\phi_1\theta^{i-1} - \phi_2\theta_{i-2}\right),\quad i=2,3,\ldots
+  \end{align*}
+\end{enumerate}
+\end{sol}
+\end{exercice}
 
-On considère l'équation en différence suivante:
+\begin{exercice}
+  On considère l'équation en différence suivante:
 \begin{align*}
   y_t = 1.5 y_{t-1} - 0.5 y_{t-2} + \epsilon_t
 \end{align*}
@@ -122,10 +409,85 @@ On considère l'équation en différence suivante:
 \item Évaluez $E[y_t]$, $E[y_{t+1}]$, $Var[y_t]$, $Var[y_{t+1}]$ et $Cov[y_{t},y_{t+1}]$.
 \item Donnez l'expression d'un intervalle de confiance à 95\% pour la valeur de $y_{t+1}$ 
 \end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+\item C'est un modèle AR(2) de paramètres $\phi_1=1.5$ et $\phi_2=-0.5$.
+\item L'équation caractéristique prend la forme suivante:
+  \begin{align*}
+    y_t - 1.5 y_{t-1} + 0.5y_{t-2} = 0
+  \end{align*}
+  
+  On pose la solution générale $y_t=A\alpha^t$:
+  \begin{align*}
+    A\alpha^t - 1.5 A\alpha^{t-1} + 0.5A\alpha^{t-2} = 0
+  \end{align*}
+  
+  On divise ensuite par $A\alpha^{t-2}$:
+  \begin{align*}
+    0 &= \alpha^2 - 1.5 \alpha + 0.5\\
+    \alpha &= \frac{1.5 \pm \sqrt{1.5^2-4*1*0.5}}{2} \\
+    &= \left\{0.5 ; 1 \right\}
+  \end{align*}
 
-\subsection{Somme de deux processus}
+\item
+  \begin{align*}
+    1 - 1.5B + 0.5B^2 &= 0 \\
+    (1-B)(1-0.5B) &= 0
+  \end{align*}
+  Ce qui nous donne:
+  \begin{align*}
+    B &= \left\{ 1;2 \right\} \\
+    B^{-1} &= \left\{ 1;0.5 \right\}
+  \end{align*}
 
-Soit les deux processus suivants:
+\item Nous n'avons pas la stationnarité, car $\alpha$ n'est pas à l'intérieur du cercle unité
+
+\item
+  \begin{align*}
+    y_2 &= 1.5 y_1 - 0.5y_0 + \epsilon_2 \\
+    y_3 &= 1.5 y_2 - 0.5y_1 + \epsilon_3 \\
+    &= \epsilon_3 + 1.5 \epsilon_2 + 1.75y_1 - 0.75 y_0 \\
+    y_4 &= 1.5 y_3 - 0.5y_2 + \epsilon_4 \\
+    &= \epsilon_4 + 1.5 \epsilon_3 + 1.75 \epsilon_2 + 1.875 y_1 - 0.875 y_0
+  \end{align*}
+  
+  On peut observer un motif répétifif, que l'on représente sous la forme
+  \begin{align*}
+    y_t &= \sum_{i=0}^{t-2} \alpha_i\epsilon_{t-i} + \alpha_{t-1}y_1 + \alpha_t y_0 \\
+  \end{align*}
+  où 
+  \begin{align*}
+    \alpha_0 &= 1\\ 
+    \alpha_1 &= 1.5\\
+    \alpha_t &= 1-\alpha_{t-1}
+    \alpha_i &= 1.5 \alpha_{i-1} - 0.5 \alpha_{i-2}
+  \end{align*}
+\item 
+  \begin{align*}
+    y_s &= \sum_{i=0}^{s-2} \alpha_i\epsilon_{s-i} + \alpha_{s-1}y_1 + \alpha_s y_0 \\
+    y_{t+s} &= \sum_{i=0}^{s-2} \alpha_i\epsilon_{t+s-i} + \alpha_{s-1}y_{t+1} + \alpha_s y_t \\
+    E_{t+1}\left[y_{t+s}\right] &= \alpha_{s-1} y_{t+1} + \alpha_s y_t
+  \end{align*}
+
+\item
+  \begin{align*}
+    E\left[y_t\right] &= \alpha_{t-1} y_1 + \alpha_t y_0 \\
+    E\left[y_{t+1}\right] &= \alpha_{t} y_1 + \alpha_{t+1} y_0 \\
+    Var\left[y_t\right] &= \left[1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2\right]\sigma^2 \\
+    Var\left[y_{t+1}\right] &= Var\left[y_t\right] + \alpha_{t-1}^2 \sigma^2 \\
+    Cov\left[y_{t},y_{t+1}\right] &= \left[\alpha_0\alpha_1 + \alpha_1\alpha_2 + \ldots + \alpha_{t-3}\alpha_{t-2}\right] \sigma^2
+  \end{align*}
+\item
+  \begin{align*}
+    \alpha_{t} y_1 + \alpha_{t+1} y_0 \pm 1.96 * \sigma \sqrt{1+\alpha_1^2 + \alpha_2^2 + \ldots + \alpha_{t-2}^2+\alpha_{t-1}^2}
+  \end{align*}
+\end{enumerate}
+\end{sol}
+\end{exercice}
+
+
+\begin{exercice}
+  Soit les deux processus suivants:
 \begin{align*}
 Y_t &= V_t + \alpha V_{t-1} \\
 Z_t &= \delta_t
@@ -137,16 +499,65 @@ On ajoute que $V_t$ et $\delta_t$ sont indépendants.
 \item Déterminer le modèle classique pour le processus $X_t = Y_t + Z_t$ sous la forme ARMA(p,q).
 \item Évaluer les paramètres $\theta_1,\ldots,\theta_n, \phi_1, \ldots \phi_n$ et $\sigma^2_{\epsilon}$ du modèle identifié précédemment, considérant que $\alpha=0.5, \sigma^2_{V}=0.04$ et $\sigma^2_{\delta}=0.01$.
 \end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+\item 
+  \begin{align*}
+    Var[X_t] &= Var[Y_t] + Var[Z_t] \\
+    &= (1+\alpha^2)\sigma^2_{V} + \sigma^2_{\delta} \\
+    E[X_t,X_{t-1}] &= E[(v_t+\delta_t+\alpha v_{t-1})(v_{t-1}+\delta_{t-1}+\alpha v_{t-2})] \\
+    &= \alpha \sigma^2_{V} \\
+    E[X_t,X_{t-k}] &= 0, \quad\forall k \neq \{ 0,1 \} \\
+    &\Rightarrow \gamma_0,\gamma_1 \neq 0; \gamma_k=0 \forall k \neq \{ 0,1 \} \\
+  \end{align*}
+  Par conséquent, il s'agit d'un modèle MA(1).
+\item 
+  \begin{align*}
+    \gamma_0 &= (1+\theta_1^2) \sigma^2_{\epsilon} = (1+\alpha^2)\sigma^2_{V} + \sigma^2_{\delta} \\
+    \gamma_1 &= \theta\sigma^2_{\epsilon} = \alpha\sigma^2_{V}
+  \end{align*}
+  On résous ce système d'équations numériquement:
+  
 
-\subsection{Projection AR(1)}
+\begin{Schunk}
+\begin{Sinput}
+> fun1 <- function(par,alpha,sV,sdelta)
++ {
++   sqrt(((1+alpha^2)*sV+sdelta-(1+par[1]^2)*par[2])^2
++        +(alpha*sV-par[1]*par[2])^2)
++ }
+> paramoptimaux1 <- round(optim(c(0.4,0.04),fun1,,0.5,0.04,0.01)$par,5)
+\end{Sinput}
+\end{Schunk}
 
-Trouver la valeur projetée $x_{t+2}$ et l'intervalle de confiance à 95\% pour le processus $AR(1)$ de paramètre $\phi=0.4$ et $\sigma^2_{\epsilon}=0.25$, si $x_t=1.5$.
+On a donc que $\theta$ = 0.38197 et $\sigma^2_{\epsilon}$ = 0.05236
+  On obtient le meme résultat en utilisant un logiciel de calcul symbolique comme Maxima.
+  \end{enumerate}
+\end{sol}
+\end{exercice}
 
-\clearpage
+\begin{exercice}
+  Trouver la valeur projetée $x_{t+2}$ et l'intervalle de confiance à 95\% pour le processus $AR(1)$ de paramètre $\phi=0.4$ et $\sigma^2_{\epsilon}=0.25$, si $x_t=1.5$.
+  \begin{sol}
+    \begin{align*}
+  E_t[x_{t+2}] &= \phi^2 x_t = 0.4^2*1.5 = 0.24 \\
+  V_t[x_{t+2}] &= (1+\phi^2)\sigma^2_{\epsilon} = (1+0.4^2)*0.25 = 0.29
+\end{align*}
 
-\input{cc}
-\end{document}
+Intervalle de confiance:
+
+\begin{align*}
+  IC &= E_t[x_{t+2}] \pm \Phi^{-1}(0.975)\sqrt{V_t[x_{t+2}]} \\
+  &= 0.4^2*1.5 \pm 1.96 \sqrt{(1+0.4^2)*0.25} \\
+  &= [-0.815492;1.295492]
+\end{align*}
+  \end{sol}
+\end{exercice}
+
+\Closesolutionfile{solutions}
+\Closesolutionfile{reponses}
+
 %%% Local Variables: 
 %%% mode: latex
-%%% TeX-master: t
+%%% TeX-master: "exercices_series_chrono"
 %%% End: 
